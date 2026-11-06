@@ -10,7 +10,7 @@
     <meta name="keywords" content="car dealer Nairobi, used cars Kenya, new cars Nairobi, LIDMAS Auto, Bunyala Rd car dealer, buy car Kenya, car financing Nairobi, Toyota Kenya, BMW Kenya">
     <meta name="author" content="LIDMAS Auto Limited">
     <meta name="robots" content="index, follow, max-image-preview:large">
-   <meta name="theme-color" content="#0b1f3a">
+    <meta name="theme-color" content="#0b1f3a">
     <link rel="canonical" href="https://lidmasauto.co.ke/">
 
     <!-- ============ OPEN GRAPH ============ -->
@@ -113,7 +113,6 @@
 
     <style>
         :root {
-    /* NEW PALETTE: Midnight Navy + Electric Teal + Warm Amber + Ivory */
     --navy:          #0b1f3a;
     --navy-deep:     #061428;
     --navy-light:    #143257;
@@ -131,7 +130,6 @@
     --success:       #22c55e;
     --danger:        #ef4444;
 
-    /* Legacy aliases so existing rules keep working */
     --forest:        var(--navy);
     --forest-deep:   var(--navy-deep);
     --forest-light:  var(--navy-light);
@@ -185,7 +183,7 @@
         @media (max-width: 768px) { .parallax { background-attachment: scroll; } }
 
         .bg-hero       { background-image: url('images/hero/hero-main.jpg'); }
-                .bg-trust      { background-image: url('https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&w=1920'); }
+        .bg-trust      { background-image: url('https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&w=1920'); }
         .bg-inventory  { background-image: url('https://images.pexels.com/photos/193991/pexels-photo-193991.jpeg?auto=compress&cs=tinysrgb&w=1920'); }
         .bg-financing  { background-image: url('https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&cs=tinysrgb&w=1920'); }
         .bg-gallery    { background-image: url('https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg?auto=compress&cs=tinysrgb&w=1920'); }
@@ -1039,16 +1037,6 @@
 .blog-card p { color: var(--text-muted); font-size: 0.9rem; }
 .blog-meta { margin-top: 15px; color: var(--text-muted); font-size: 0.8rem; }
 
-/* ===== COUNTDOWN BADGE ===== */
-.countdown-badge {
-    background: linear-gradient(135deg, var(--danger), #c0392b);
-    color: white; padding: 8px 20px;
-    border-radius: 30px; font-weight: 700;
-    display: inline-flex; align-items: center; gap: 10px;
-    margin: 20px auto; font-size: 0.9rem;
-    animation: pulse 2s infinite;
-}
-
 /* ===== TRUST LOGOS BAR ===== */
 .trust-logos {
     padding: 40px 0; background: white;
@@ -1065,6 +1053,50 @@
     font-weight: 700; font-size: 0.85rem;
 }
 .trust-logo-item i { font-size: 2rem; color: var(--terracotta); display: block; margin-bottom: 8px; }
+
+/* ===== VISIT SECTION ===== */
+.visit-section { padding: 80px 0; background: var(--cream-soft); }
+.visit-grid {
+    display: grid; grid-template-columns: 1fr 1.5fr;
+    gap: 40px; align-items: start;
+}
+@media (max-width: 900px) { .visit-grid { grid-template-columns: 1fr; } }
+.visit-info {
+    background: white; border-radius: 20px;
+    padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.visit-line {
+    display: flex; align-items: flex-start; gap: 15px;
+    padding: 15px 0; border-bottom: 1px solid rgba(15, 61, 46, 0.1);
+}
+.visit-line:last-of-type { border-bottom: none; }
+.visit-line i {
+    color: var(--terracotta); font-size: 1.3rem;
+    margin-top: 4px; min-width: 24px;
+}
+.visit-line h4 {
+    color: var(--forest); font-size: 0.95rem;
+    margin-bottom: 4px; font-weight: 700;
+}
+.visit-line p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+.visit-line a { color: var(--terracotta); text-decoration: none; font-weight: 600; }
+.visit-line a:hover { text-decoration: underline; }
+.visit-directions-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--forest); color: var(--cream);
+    padding: 12px 24px; border-radius: 30px;
+    text-decoration: none; font-weight: 700;
+    margin-top: 20px; transition: all 0.3s;
+    font-size: 0.9rem;
+}
+.visit-directions-btn:hover {
+    background: var(--terracotta); transform: translateY(-2px);
+}
+.visit-map {
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    min-height: 400px;
+}
 
     </style>
 </head>
@@ -1159,7 +1191,7 @@
             <div class="title-line"></div>
             <p>Your trusted partner in finding the perfect vehicle</p>
         </div>
-    
+        <div class="trust-grid">
             <div class="trust-card">
                 <i class="fas fa-truck"></i>
                 <h3>Nationwide Delivery</h3>
@@ -1203,17 +1235,19 @@
                         <option value="Sedan">Sedan</option>
                         <option value="Pickup">Pickup</option>
                         <option value="Hatchback">Hatchback</option>
+                        <option value="Van">Van</option>
                     </select>
                 </div>
                 <div class="search-field">
                     <label for="priceFilter"><i class="fas fa-tag"></i> Price Range</label>
-                    <select id="priceFilter" aria-label="Filter by price">
-                        <option value="">Any Price</option>
-                        <option value="0-20000">Under KES 20K</option>
-                        <option value="20000-40000">KES 20K – 40K</option>
-                        <option value="40000-70000">KES 40K – 70K</option>
-                        <option value="70000-999999">KES 70K+</option>
-                    </select>
+                   <select id="priceFilter" aria-label="Filter by price">
+    <option value="">Any Price</option>
+    <option value="0-1000000">Under KES 1M</option>
+    <option value="1000000-2000000">KES 1M – 2M</option>
+    <option value="2000000-3000000">KES 2M – 3M</option>
+    <option value="3000000-5000000">KES 3M – 5M</option>
+    <option value="5000000-999999999">KES 5M+</option>
+</select> 
                 </div>
                 <button class="search-btn" onclick="applyFilters()"><i class="fas fa-filter"></i> Filter</button>
             </div>
@@ -1366,8 +1400,7 @@
         </div>
     </div>
 </section>
-<a href="#tradein">Trade-In</a>
-<a href="#blog">Stories</a>
+
 <!-- REVIEWS -->
 <section class="reviews-section parallax bg-reviews" id="reviews">
     <div class="container">
@@ -1391,9 +1424,6 @@
     <div class="container">
         <p class="brands-eyebrow">BRANDS WE STOCK</p>
         <div class="brands-grid">
-
-            <!-- ===== JAPANESE BRANDS ===== -->
-
             <!-- Toyota -->
             <div class="brand-card">
                 <svg class="brand-logo" viewBox="0 0 24 24" role="img" aria-label="Toyota logo">
@@ -1495,8 +1525,6 @@
                 <span class="brand-name">Mitsubishi</span>
             </div>
 
-            <!-- ===== EUROPEAN BRANDS ===== -->
-
             <!-- BMW -->
             <div class="brand-card">
                 <svg class="brand-logo" viewBox="0 0 120 40" role="img" aria-label="BMW logo">
@@ -1563,7 +1591,6 @@
                 </svg>
                 <span class="brand-name">Volvo</span>
             </div>
-
         </div>
     </div>
 </section>
@@ -1584,7 +1611,6 @@
                 </div>
                 <div class="faq-answer">Yes! We partner with leading banks and SACCOs in Kenya. You can finance up to 80% of the vehicle price with repayment periods from 12 to 60 months.</div>
             </div>
-        
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     <span>Can I trade in my old car?</span>
@@ -1630,9 +1656,7 @@
 <section class="trust-logos">
     <div class="container">
         <div class="trust-logos-inner">
-
             <div class="trust-logo-item">
-                <!-- Official Google "G" Logo -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" style="display:inline-block; vertical-align:middle; margin-right: 8px;">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                     <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -1643,7 +1667,6 @@
             </div>
 
             <div class="trust-logo-item">
-                <!-- Shield Check (KRA Verified) -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0b6e4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right: 8px;">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                     <path d="M9 12l2 2 4-4"/>
@@ -1652,7 +1675,6 @@
             </div>
 
             <div class="trust-logo-item">
-                <!-- NTSA Compliant Badge -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" style="display:inline-block; vertical-align:middle; margin-right: 8px;">
                     <circle cx="12" cy="12" r="10" fill="#289540"/>
                     <path d="M12 5.5 L15.5 10.5 L12 18.5 L8.5 10.5 Z" fill="#B4A11C"/>
@@ -1662,7 +1684,6 @@
             </div>
 
             <div class="trust-logo-item">
-                <!-- Handshake (Insured & Bonded) -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#1a4d8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right: 8px;">
                     <path d="M11 17l-1.5-1.5a2.12 2.12 0 0 1 0-3l4-4a2.12 2.12 0 0 1 3 0l1.5 1.5"/>
                     <path d="M13 7l1.5-1.5a2.12 2.12 0 0 1 3 0l4 4a2.12 2.12 0 0 1 0 3L20 14"/>
@@ -1673,7 +1694,6 @@
             </div>
 
             <div class="trust-logo-item">
-                <!-- Award / Medal (14 Years Trusted) -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#c99700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right: 8px;">
                     <circle cx="12" cy="8" r="6"/>
                     <path d="M15.5 13.5L17 22l-5-3-5 3 1.5-8.5"/>
@@ -1681,10 +1701,10 @@
                 </svg>
                 <span>14 Years Trusted</span>
             </div>
-
         </div>
     </div>
 </section>
+
 <!-- ===== RECENTLY VIEWED ===== -->
 <section class="recently-viewed" id="recentlyViewedSection">
     <div class="container">
@@ -1822,7 +1842,6 @@
                     <div>
                         <h4>Call Us</h4>
                         <p><a href="tel:+254797986648">0797986648</a> · <a href="tel:+254793788305">0793788305</a></p>
-                        
                     </div>
                 </div>
                 <div class="visit-line">
@@ -1873,9 +1892,8 @@
             <div class="footer-col">
                 <h4>Contact Us</h4>
                 <p><i class="fas fa-map-marker-alt"></i> Bunyala Rd, Nairobi</p>
-                <p><i class="fas fa-phone"></i>0793788305</p>
-                 <p><i class="fas fa-phone"></i>0797986648</p>
-                <p><i class="fas fa-phone"></i></p>
+                <p><i class="fas fa-phone"></i> 0793788305</p>
+                <p><i class="fas fa-phone"></i> 0797986648</p>
                 <p><i class="fas fa-envelope"></i> info@lidmasautos.co.ke</p>
                 <p><i class="fas fa-clock"></i> Mon–Sun: 7am–7pm</p>
                 <p><i class="fas fa-clock"></i> holidays: 9am-4pm</p>
@@ -1928,81 +1946,70 @@
 // ============================================================
 // ⚠️  INVENTORY DATA — THIS IS WHAT YOU EDIT TO UPDATE STOCK
 // ============================================================
+// Prices are in KES (kshPrice is the single source of truth).
 // To mark a car as sold: change status: "available" → "sold"
 // To add a new car: copy one block, paste it, update the details
 // ============================================================
 const VEHICLES = [
     {
-        id: 1, name: "Toyota Aqua", year: 2018, price: 10615, mileage: "Hybrid", fuel: "Hybrid", transmission: "Automatic", body: "Hatchback", status: "available", hot: true,
+        id: 1, name: "Toyota Aqua", year: 2018, kshPrice: 1380000, mileage: "Hybrid", fuel: "Hybrid", transmission: "Automatic", body: "Hatchback", status: "available", hot: true,
         image: "images/vehicles/toyota-aqua-1.jpg",
-        spec: "1500cc • Hybrid • Original paint • Accident free",
-        kshPrice: 1380000
+        spec: "1500cc • Hybrid • Original paint • Accident free"
     },
     {
-        id: 2, name: "Toyota Mark X", year: 2012, price: 10615, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "Sedan", status: "available", hot: false,
+        id: 2, name: "Toyota Mark X", year: 2012, kshPrice: 1380000, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "Sedan", status: "available", hot: false,
         image: "images/vehicles/toyota-mark-x-1.jpg",
-        spec: "2500cc • Push to start • Keyless entry • New rims • Original paint",
-        kshPrice: 1380000
+        spec: "2500cc • Push to start • Keyless entry • New rims • Original paint"
     },
     {
-        id: 3, name: "Subaru Forester", year: 2012, price: 11385, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "SUV", status: "available", hot: false,
+        id: 3, name: "Subaru Forester", year: 2012, kshPrice: 1480000, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "SUV", status: "available", hot: false,
         image: "images/vehicles/subaru-forester-2012-1.jpg",
-        spec: "2000cc • Original paint • Accident free",
-        kshPrice: 1480000
+        spec: "2000cc • Original paint • Accident free"
     },
     {
-        id: 4, name: "Toyota Hiace 9L", year: 2017, price: 33460, mileage: "Diesel", fuel: "Diesel", transmission: "Manual", body: "Van", status: "available", hot: true,
+        id: 4, name: "Toyota Hiace 9L", year: 2017, kshPrice: 4350000, mileage: "Diesel", fuel: "Diesel", transmission: "Manual", body: "Van", status: "available", hot: true,
         image: "images/vehicles/toyota-hiace-1.jpg",
-        spec: "18 Seater • Diesel • Manual • Accident free • Well maintained",
-        kshPrice: 4350000
+        spec: "18 Seater • Diesel • Manual • Accident free • Well maintained"
     },
     {
-        id: 5, name: "Subaru Forester", year: 2006, price: 6770, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "SUV", status: "available", hot: false,
+        id: 5, name: "Subaru Forester", year: 2006, kshPrice: 880000, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "SUV", status: "available", hot: false,
         image: "images/vehicles/subaru-forester-2006-1.jpg",
-        spec: "2000cc • Accident free • Well maintained",
-        kshPrice: 880000
+        spec: "2000cc • Accident free • Well maintained"
     },
     {
-        id: 6, name: "Toyota Vanguard", year: 2013, price: 14230, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "SUV", status: "available", hot: false,
+        id: 6, name: "Toyota Vanguard", year: 2013, kshPrice: 1850000, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "SUV", status: "available", hot: false,
         image: "images/vehicles/toyota-vanguard-1.jpg",
-        spec: "2400cc • Accident free • Well maintained",
-        kshPrice: 1850000
+        spec: "2400cc • Accident free • Well maintained"
     },
     {
-        id: 7, name: "Toyota Fortuner", year: 2015, price: 30770, mileage: "Diesel", fuel: "Diesel", transmission: "Automatic", body: "SUV", status: "available", hot: true,
+        id: 7, name: "Toyota Fortuner", year: 2015, kshPrice: 4000000, mileage: "Diesel", fuel: "Diesel", transmission: "Automatic", body: "SUV", status: "available", hot: true,
         image: "images/vehicles/toyota-fortuner-1.jpg",
-        spec: "3000cc • Diesel • 7 Seater • Original paint • Accident free",
-        kshPrice: 4000000
+        spec: "3000cc • Diesel • 7 Seater • Original paint • Accident free"
     },
     {
-        id: 8, name: "Toyota Rush", year: 2019, price: 14615, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "SUV", status: "available", hot: false,
+        id: 8, name: "Toyota Rush", year: 2019, kshPrice: 1900000, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "SUV", status: "available", hot: false,
         image: "images/vehicles/toyota-rush-1.jpg",
-        spec: "1500cc • 2WD • 7 Seater",
-        kshPrice: 1900000
+        spec: "1500cc • 2WD • 7 Seater"
     },
     {
-        id: 9, name: "Toyota Vitz", year: 2012, price: 5690, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "Hatchback", status: "available", hot: false,
+        id: 9, name: "Toyota Vitz", year: 2012, kshPrice: 740000, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "Hatchback", status: "available", hot: false,
         image: "images/vehicles/toyota-vitz-1.jpg",
-        spec: "1300cc • Accident free • In good condition",
-        kshPrice: 740000
+        spec: "1300cc • Accident free • In good condition"
     },
     {
-        id: 10, name: "Toyota Premio", year: 2007, price: 9615, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "Sedan", status: "available", hot: false,
+        id: 10, name: "Toyota Premio", year: 2007, kshPrice: 1250000, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "Sedan", status: "available", hot: false,
         image: "images/vehicles/toyota-premio-1.jpg",
-        spec: "1800cc • Leather seats • Neat beige interior • New tyres • Original paint",
-        kshPrice: 1250000
+        spec: "1800cc • Leather seats • Neat beige interior • New tyres • Original paint"
     },
     {
-        id: 11, name: "Subaru Forester Welcab", year: 2015, price: 16540, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "SUV", status: "available", hot: true,
+        id: 11, name: "Subaru Forester Welcab", year: 2015, kshPrice: 2150000, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "SUV", status: "available", hot: true,
         image: "images/vehicles/subaru-forester-2015-1.jpg",
-        spec: "2000cc • Welcab lift seat • Neat interior • Original paint",
-        kshPrice: 2150000
+        spec: "2000cc • Welcab lift seat • Neat interior • Original paint"
     },
     {
-        id: 12, name: "Toyota Succeed", year: 2018, price: 9845, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "Van", status: "available", hot: false,
+        id: 12, name: "Toyota Succeed", year: 2018, kshPrice: 1280000, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "Van", status: "available", hot: false,
         image: "images/vehicles/toyota-succeed-1.jpg",
-        spec: "1500cc • 2WD • Original paint • Accident free",
-        kshPrice: 1280000
+        spec: "1500cc • 2WD • Original paint • Accident free"
     }
 ];
 
@@ -2033,12 +2040,13 @@ let currentFilter = 'all';
 let searchTerm = '';
 let bodyFilter = '';
 let priceFilter = '';
+let compareList = [];
 
 // ============================================================
 // RENDER FUNCTIONS
 // ============================================================
-function formatPrice(priceUSD) {
-    return 'KES ' + (priceUSD * 130).toLocaleString();
+function formatPrice(priceKES) {
+    return 'KES ' + Number(priceKES).toLocaleString();
 }
 
 function renderVehicles() {
@@ -2055,7 +2063,7 @@ function renderVehicles() {
     if (bodyFilter) list = list.filter(v => v.body === bodyFilter);
     if (priceFilter) {
         const [min, max] = priceFilter.split('-').map(Number);
-        list = list.filter(v => v.price >= min && v.price <= max);
+        list = list.filter(v => v.kshPrice >= min && v.kshPrice <= max);
     }
 
     const grid = document.getElementById('vehicleGrid');
@@ -2071,6 +2079,7 @@ function renderVehicles() {
 
     grid.innerHTML = list.map((v, i) => {
         const isFav = favorites.includes(v.id);
+        const inCompare = compareList.includes(v.id);
         const badge = v.status === 'available'
             ? '<span class="vehicle-badge badge-available">✓ AVAILABLE</span>'
             : '<span class="vehicle-badge badge-sold">SOLD</span>';
@@ -2079,33 +2088,47 @@ function renderVehicles() {
         const buttons = v.status === 'available'
             ? `<button class="btn-v btn-v-primary" onclick="bookVehicle('${v.name.replace(/'/g, "\\'")}')"><i class="fas fa-calendar-check"></i> Test Drive</button>
                <button class="btn-v btn-v-outline" onclick="inquireVehicle('${v.name.replace(/'/g, "\\'")}')"><i class="fas fa-phone"></i> Inquire</button>`
-            : `<button class="btn-v btn-v-outline" style="flex:1;" onclick="alert('This vehicle has been sold.\\n\\nCall us at 0720 443416 to check for similar vehicles!')"><i class="fas fa-info-circle"></i> Find Similar</button>`;
+            : `<button class="btn-v btn-v-outline" style="flex:1;" onclick="alert('This vehicle is sold. Call 0720 443416 for similar options.')"><i class="fas fa-info-circle"></i> Find Similar</button>`;
+
+        const compareBtn = v.status === 'available'
+            ? `<button class="btn-v btn-v-outline" style="flex:0 0 auto; padding: 11px 14px; ${inCompare ? 'background:var(--forest); color:var(--cream);' : ''}" onclick="toggleCompare(${v.id})" title="Add to compare">
+                 <i class="fas fa-columns"></i>
+               </button>`
+            : '';
 
         return `
             <article class="vehicle-card" style="animation-delay:${i * 0.05}s;">
                 <div class="vehicle-img-wrap">
                     ${badge}${hotBadge}
+                    <button class="quick-view-btn" onclick="openVehicleModal(${v.id})">
+                        <i class="fas fa-eye"></i> Quick View
+                    </button>
                     <img src="${v.image}" alt="${v.name} for sale in Nairobi" loading="lazy"
+                         onclick="openVehicleModal(${v.id})"
+                         style="cursor:pointer;"
                          onerror="this.style.display='none'; this.parentElement.innerHTML+='<div style=\\'display:flex;align-items:center;justify-content:center;height:100%;color:#e0a458;font-size:3rem;\\'><i class=\\'fas fa-car-side\\'></i></div>'">
                 </div>
                 <div class="vehicle-info">
-                    <h3>${v.name}</h3>
-                  <div class="vehicle-specs">
-    <span><i class="fas fa-calendar"></i> ${v.year}</span>
-    <span><i class="fas fa-tachometer-alt"></i> ${v.mileage}</span>
-    <span><i class="fas fa-gas-pump"></i> ${v.fuel}</span>
-    <span><i class="fas fa-cogs"></i> ${v.transmission}</span>
-</div>
+                    <h3 onclick="openVehicleModal(${v.id})" style="cursor:pointer;">${v.name}</h3>
+                    <div class="vehicle-specs">
+                        <span><i class="fas fa-calendar"></i> ${v.year}</span>
+                        <span><i class="fas fa-tachometer-alt"></i> ${v.mileage}</span>
+                        <span><i class="fas fa-gas-pump"></i> ${v.fuel}</span>
+                        <span><i class="fas fa-cogs"></i> ${v.transmission}</span>
+                    </div>
                     <div class="vehicle-price-row">
                         <div class="price">
-                            ${formatPrice(v.price)}
-                            <small>~ USD ${v.price.toLocaleString()}</small>
+                            ${formatPrice(v.kshPrice)}
+                            <small>Price in Kenya Shillings</small>
                         </div>
                         <button class="favorite-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite(${v.id}, this)" title="Save to favorites" aria-label="Favorite">
                             <i class="fas fa-heart"></i>
                         </button>
                     </div>
-                    <div class="vehicle-actions">${buttons}</div>
+                    <div class="vehicle-actions">
+                        ${buttons}
+                        ${compareBtn}
+                    </div>
                 </div>
             </article>`;
     }).join('');
@@ -2201,6 +2224,298 @@ function calculateLoan() {
 }
 
 // ============================================================
+// VEHICLE DETAILS MODAL
+// ============================================================
+let currentVehicleId = null;
+
+const VEHICLE_GALLERIES = {
+    1: ["images/vehicles/toyota-aqua-1.jpg", "images/vehicles/toyota-aqua-2.jpg"],
+    2: ["images/vehicles/toyota-mark-x-1.jpg", "images/vehicles/toyota-mark-x-2.jpg"],
+    3: ["images/vehicles/subaru-forester-2012-1.jpg", "images/vehicles/subaru-forester-2012-2.jpg"],
+    4: ["images/vehicles/toyota-hiace-1.jpg", "images/vehicles/toyota-hiace-2.jpg", "images/vehicles/toyota-hiace-3.jpg"],
+    5: ["images/vehicles/subaru-forester-2006-1.jpg", "images/vehicles/subaru-forester-2006-2.jpg"],
+    6: ["images/vehicles/toyota-vanguard-1.jpg", "images/vehicles/toyota-vanguard-2.jpg"],
+    7: ["images/vehicles/toyota-fortuner-1.jpg", "images/vehicles/toyota-fortuner-2.jpg"],
+    8: ["images/vehicles/toyota-rush-1.jpg", "images/vehicles/toyota-rush-2.jpg"],
+    9: ["images/vehicles/toyota-vitz-1.jpg", "images/vehicles/toyota-vitz-2.jpg"],
+    10: ["images/vehicles/toyota-premio-1.jpg", "images/vehicles/toyota-premio-2.jpg"],
+    11: ["images/vehicles/subaru-forester-2015-1.jpg", "images/vehicles/subaru-forester-2015-2.jpg"],
+    12: ["images/vehicles/toyota-succeed-1.jpg", "images/vehicles/toyota-succeed-2.jpg"]
+};
+
+function openVehicleModal(id) {
+    const v = VEHICLES.find(x => x.id === id);
+    if (!v) return;
+    currentVehicleId = id;
+    addToRecentlyViewed(id);
+
+    const images = VEHICLE_GALLERIES[id] || [v.image];
+    document.getElementById('vdMainImg').src = images[0];
+    document.getElementById('vdMainImg').alt = v.name;
+
+    document.getElementById('vdThumbnails').innerHTML = images.map((img, idx) =>
+        `<img class="vd-thumb ${idx === 0 ? 'active' : ''}" src="${img}" onclick="switchMainImage('${img}', this)" alt="View ${idx + 1}">`
+    ).join('');
+
+    document.getElementById('vdInfo').innerHTML = `
+        <h2>${v.name}</h2>
+        <p style="color: var(--text-muted);"><i class="fas fa-map-marker-alt"></i> Available at Bunyala Rd, Nairobi</p>
+        <div class="vd-price">${formatPrice(v.kshPrice)}</div>
+
+        <table class="vd-specs-table">
+            <tr><td>Year</td><td>${v.year}</td></tr>
+            <tr><td>Body Type</td><td>${v.body}</td></tr>
+            <tr><td>Transmission</td><td>${v.transmission}</td></tr>
+            <tr><td>Fuel</td><td>${v.fuel}</td></tr>
+            ${v.spec ? `<tr><td>Key Features</td><td style="font-size: 0.8rem; line-height: 1.5;">${v.spec}</td></tr>` : ''}
+            <tr><td>Status</td><td style="color: ${v.status === 'available' ? 'var(--success)' : 'var(--danger)'};">
+                ${v.status === 'available' ? '✓ Available Now' : 'Sold'}
+            </td></tr>
+            <tr><td>Warranty</td><td>12 Months</td></tr>
+            <tr><td>Inspection</td><td>150-Point Passed</td></tr>
+        </table>
+
+        <div class="vd-cta-row">
+            <button class="vd-btn vd-btn-primary" onclick="bookVehicle('${v.name.replace(/'/g, "\\'")}')">
+                <i class="fas fa-calendar-check"></i> Book Test Drive
+            </button>
+            <button class="vd-btn vd-btn-secondary" onclick="inquireVehicle('${v.name.replace(/'/g, "\\'")}')">
+                <i class="fas fa-phone"></i> Inquire
+            </button>
+        </div>
+        <div class="vd-cta-row" style="margin-top: 10px;">
+            <button class="vd-btn vd-share" onclick="shareVehicle('${v.name.replace(/'/g, "\\'")}', '${formatPrice(v.kshPrice)}')">
+                <i class="fab fa-whatsapp"></i> Share with a Friend
+            </button>
+        </div>
+    `;
+
+    document.getElementById('vdOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+
+function switchMainImage(src, thumb) {
+    document.getElementById('vdMainImg').src = src;
+    document.querySelectorAll('.vd-thumb').forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+}
+
+function closeVehicleModal() {
+    document.getElementById('vdOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+}
+
+function shareVehicle(name, price) {
+    const msg = `Check out this ${name} (${price}) at LIDMAS Auto Nairobi! https://lidmasauto.co.ke`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// ============================================================
+// COMPARE FEATURE
+// ============================================================
+function toggleCompare(id) {
+    const idx = compareList.indexOf(id);
+    if (idx > -1) {
+        compareList.splice(idx, 1);
+    } else {
+        if (compareList.length >= 3) {
+            alert('You can compare up to 3 vehicles at once.');
+            return;
+        }
+        compareList.push(id);
+    }
+    updateCompareBar();
+    renderVehicles();
+}
+
+function updateCompareBar() {
+    const bar = document.getElementById('compareBar');
+    const slots = document.getElementById('compareSlots');
+    const goBtn = document.getElementById('compareGoBtn');
+
+    if (compareList.length > 0) {
+        bar.classList.add('show');
+    } else {
+        bar.classList.remove('show');
+    }
+
+    let html = '';
+    for (let i = 0; i < 3; i++) {
+        if (compareList[i]) {
+            const v = VEHICLES.find(x => x.id === compareList[i]);
+            html += `<div class="compare-slot filled">
+                <span style="flex:1;">${v.name.length > 20 ? v.name.substring(0, 18) + '…' : v.name}</span>
+                <button onclick="toggleCompare(${v.id})"><i class="fas fa-times"></i></button>
+            </div>`;
+        } else {
+            html += `<div class="compare-slot">+ Add vehicle</div>`;
+        }
+    }
+    slots.innerHTML = html;
+    goBtn.disabled = compareList.length < 2;
+}
+
+function clearCompare() {
+    compareList = [];
+    updateCompareBar();
+    renderVehicles();
+}
+
+function showCompare() {
+    if (compareList.length < 2) return;
+    const vehicles = compareList.map(id => VEHICLES.find(x => x.id === id)).filter(Boolean);
+
+    let html = '<thead><tr><th>Specs</th>';
+    vehicles.forEach(v => {
+        html += `<th><img src="${v.image}" alt="${v.name}"><br>${v.name}</th>`;
+    });
+    html += '</tr></thead><tbody>';
+
+    const specs = [
+        { label: 'Price', fn: v => formatPrice(v.kshPrice) },
+        { label: 'Year', fn: v => v.year },
+        { label: 'Mileage', fn: v => v.mileage },
+        { label: 'Fuel', fn: v => v.fuel },
+        { label: 'Transmission', fn: v => v.transmission },
+        { label: 'Body', fn: v => v.body },
+        { label: 'Status', fn: v => v.status === 'available' ? '✓ Available' : 'Sold' },
+        { label: 'Warranty', fn: () => '12 Months' }
+    ];
+
+    specs.forEach(spec => {
+        html += `<tr><td>${spec.label}</td>`;
+        vehicles.forEach(v => { html += `<td>${spec.fn(v)}</td>`; });
+        html += '</tr>';
+    });
+    html += '</tbody>';
+
+    document.getElementById('compareTable').innerHTML = html;
+    document.getElementById('compareOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCompare() {
+    document.getElementById('compareOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+}
+
+// ============================================================
+// RECENTLY VIEWED
+// ============================================================
+const RECENT_KEY = 'lidmas_recent';
+
+function addToRecentlyViewed(id) {
+    let recent = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
+    recent = recent.filter(x => x !== id);
+    recent.unshift(id);
+    recent = recent.slice(0, 6);
+    localStorage.setItem(RECENT_KEY, JSON.stringify(recent));
+    renderRecentlyViewed();
+}
+
+function renderRecentlyViewed() {
+    const recent = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
+    const section = document.getElementById('recentlyViewedSection');
+    const grid = document.getElementById('recentlyViewedGrid');
+
+    if (!recent.length) {
+        section.classList.remove('show');
+        return;
+    }
+
+    section.classList.add('show');
+    grid.innerHTML = recent.map(id => {
+        const v = VEHICLES.find(x => x.id === id);
+        if (!v) return '';
+        return `<div class="rv-card" onclick="openVehicleModal(${v.id})">
+            <img src="${v.image}" alt="${v.name}">
+            <div class="rv-card-info">
+                <h4>${v.name}</h4>
+                <div class="rv-price">${formatPrice(v.kshPrice)}</div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+// ============================================================
+// TRADE-IN ESTIMATOR
+// ============================================================
+function estimateTradeIn() {
+    const make = document.getElementById('tradeMake').value.trim();
+    const model = document.getElementById('tradeModel').value.trim();
+    const year = parseInt(document.getElementById('tradeYear').value);
+    const mileage = parseInt(document.getElementById('tradeMileage').value);
+    const condition = document.getElementById('tradeCondition').value;
+
+    if (!make || !model || !year || !mileage) {
+        alert('Please fill in all fields to get an estimate.');
+        return;
+    }
+
+    // Simple estimation algorithm (KES-based)
+    const age = new Date().getFullYear() - year;
+    let baseValue = 3000000; // Base in KES
+    baseValue -= age * 150000; // Depreciation per year
+    baseValue -= mileage * 5; // Depreciation per km
+
+    const conditionMultiplier = { excellent: 1.15, good: 1.0, fair: 0.85, poor: 0.65 };
+    baseValue *= conditionMultiplier[condition];
+
+    if (baseValue < 200000) baseValue = 200000;
+
+    const low = Math.round(baseValue * 0.85);
+    const high = Math.round(baseValue * 1.15);
+
+    document.getElementById('tradeinRange').textContent = `KES ${low.toLocaleString()} — ${high.toLocaleString()}`;
+    document.getElementById('tradeinResult').classList.add('show');
+    document.getElementById('tradeinResult').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ============================================================
+// SUCCESS STORIES BLOG
+// ============================================================
+const BLOG_POSTS = [
+    {
+        image: "images/blogs/fortuner.jpg",
+        category: "Customer Story",
+        title: "How a Family Found Their Perfect 7-Seater Fortuner",
+        excerpt: "From browsing our site to driving off the lot — read how a Nairobi family found the perfect SUV with financing approved in 48 hours.",
+        date: "2 weeks ago",
+        readTime: "4 min read"
+    },
+    {
+        image: "images/blogs/ev car.jpg",
+        category: "Buying Guide",
+        title: "Hybrid Cars in Kenya: Everything You Need to Know",
+        excerpt: "Fuel savings, battery life, maintenance costs — the complete guide to buying a hybrid like the Toyota Aqua in Kenya.",
+        date: "1 month ago",
+        readTime: "6 min read"
+    },
+    {
+        image: "images/blogs/car financing.jpg",
+        category: "Financing Tips",
+        title: "How to Finance Your First Car in Kenya (2026 Guide)",
+        excerpt: "Complete guide to car financing in Kenya — banks vs SACCOs, interest rates, and how to get approved.",
+        date: "1 month ago",
+        readTime: "8 min read"
+    }
+];
+
+function renderBlog() {
+    document.getElementById('blogGrid').innerHTML = BLOG_POSTS.map(post => `
+        <article class="blog-card" onclick="alert('Full article coming soon! Call 0720 443416 to learn more.')">
+            <img src="${post.image}" alt="${post.title}" loading="lazy">
+            <div class="blog-card-content">
+                <span class="blog-category">${post.category}</span>
+                <h3>${post.title}</h3>
+                <p>${post.excerpt}</p>
+                <div class="blog-meta"><i class="far fa-clock"></i> ${post.date} • ${post.readTime}</div>
+            </div>
+        </article>
+    `).join('');
+}
+
+// ============================================================
 // EVENT LISTENERS
 // ============================================================
 document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -2264,7 +2579,7 @@ function animateCounters() {
         const timer = setInterval(() => {
             current += step;
             if (current >= target) {
-                el.textContent = target + (target === 500 || target === 14 ? '+' : '');
+                el.textContent = target + '+';
                 clearInterval(timer);
             } else {
                 el.textContent = Math.floor(current);
@@ -2279,7 +2594,7 @@ function populateVehicleDropdown() {
     available.forEach(v => {
         const opt = document.createElement('option');
         opt.value = v.name;
-        opt.textContent = `${v.name} — ${formatPrice(v.price)}`;
+        opt.textContent = `${v.name} — ${formatPrice(v.kshPrice)}`;
         sel.appendChild(opt);
     });
 }
@@ -2293,6 +2608,9 @@ document.addEventListener('DOMContentLoaded', () => {
     renderReviews();
     populateVehicleDropdown();
     calculateLoan();
+    renderBlog();
+    renderRecentlyViewed();
+    updateCompareBar();
 
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('appDate').min = today;
@@ -2307,400 +2625,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.3 });
     if (statsBar) observer.observe(statsBar);
-});
-
-
-// ---- ENHANCED VEHICLE CARD with Quick View & Compare ----
-// Replace the renderVehicles function with this enhanced version:
-
-// Additional vehicle data for the modal (image galleries)
-const VEHICLE_GALLERIES = {
-    1: ["images/vehicles/toyota-aqua-1.jpg", "images/vehicles/toyota-aqua-2.jpg"],
-    2: ["images/vehicles/toyota-mark-x-1.jpg", "images/vehicles/toyota-mark-x-2.jpg"],
-    3: ["images/vehicles/subaru-forester-2012-1.jpg", "images/vehicles/subaru-forester-2012-2.jpg"],
-    4: ["images/vehicles/toyota-hiace-1.jpg", "images/vehicles/toyota-hiace-2.jpg", "images/vehicles/toyota-hiace-3.jpg"],
-    5: ["images/vehicles/subaru-forester-2006-1.jpg", "images/vehicles/subaru-forester-2006-2.jpg"],
-    6: ["images/vehicles/toyota-vanguard-1.jpg", "images/vehicles/toyota-vanguard-2.jpg"],
-    7: ["images/vehicles/toyota-fortuner-1.jpg", "images/vehicles/toyota-fortuner-2.jpg"],
-    8: ["images/vehicles/toyota-rush-1.jpg", "images/vehicles/toyota-rush-2.jpg"],
-    9: ["images/vehicles/toyota-vitz-1.jpg", "images/vehicles/toyota-vitz-2.jpg"],
-    10: ["images/vehicles/toyota-premio-1.jpg", "images/vehicles/toyota-premio-2.jpg"],
-    11: ["images/vehicles/subaru-forester-2015-1.jpg", "images/vehicles/subaru-forester-2015-2.jpg"],
-    12: ["images/vehicles/toyota-succeed-1.jpg", "images/vehicles/toyota-succeed-2.jpg"]
-};
-
-let compareList = [];
-
-function renderVehicles() {
-    let list = [...VEHICLES];
-    if (currentFilter === 'available') list = list.filter(v => v.status === 'available');
-    else if (currentFilter === 'sold') list = list.filter(v => v.status === 'sold');
-    else if (currentFilter === 'hot') list = list.filter(v => v.hot);
-    if (searchTerm) {
-        const q = searchTerm.toLowerCase();
-        list = list.filter(v => v.name.toLowerCase().includes(q));
-    }
-    if (bodyFilter) list = list.filter(v => v.body === bodyFilter);
-    if (priceFilter) {
-        const [min, max] = priceFilter.split('-').map(Number);
-        list = list.filter(v => v.price >= min && v.price <= max);
-    }
-
-    const grid = document.getElementById('vehicleGrid');
-    if (!list.length) {
-        grid.innerHTML = `<div class="no-results"><i class="fas fa-search"></i><h3 style="color:var(--forest);">No vehicles found</h3></div>`;
-        return;
-    }
-
-    grid.innerHTML = list.map((v, i) => {
-        const isFav = favorites.includes(v.id);
-        const inCompare = compareList.includes(v.id);
-        const badge = v.status === 'available'
-            ? '<span class="vehicle-badge badge-available">✓ AVAILABLE</span>'
-            : '<span class="vehicle-badge badge-sold">SOLD</span>';
-        const hotBadge = v.hot ? '<span class="vehicle-badge-hot"><i class="fas fa-fire"></i> HOT</span>' : '';
-
-        const buttons = v.status === 'available'
-            ? `<button class="btn-v btn-v-primary" onclick="bookVehicle('${v.name.replace(/'/g, "\\'")}')"><i class="fas fa-calendar-check"></i> Test Drive</button>
-               <button class="btn-v btn-v-outline" onclick="inquireVehicle('${v.name.replace(/'/g, "\\'")}')"><i class="fas fa-phone"></i> Inquire</button>`
-            : `<button class="btn-v btn-v-outline" style="flex:1;" onclick="alert('This vehicle is sold. Call 0720 443416 for similar options.')"><i class="fas fa-info-circle"></i> Find Similar</button>`;
-
-        const compareBtn = v.status === 'available'
-            ? `<button class="btn-v btn-v-outline" style="flex:0 0 auto; padding: 11px 14px; ${inCompare ? 'background:var(--forest); color:var(--cream);' : ''}" onclick="toggleCompare(${v.id})" title="Add to compare">
-                 <i class="fas fa-columns"></i>
-               </button>`
-            : '';
-
-        return `
-            <article class="vehicle-card" style="animation-delay:${i * 0.05}s;">
-                <div class="vehicle-img-wrap">
-                    ${badge}${hotBadge}
-                    <button class="quick-view-btn" onclick="openVehicleModal(${v.id})">
-                        <i class="fas fa-eye"></i> Quick View
-                    </button>
-                    <img src="${v.image}" alt="${v.name} for sale in Nairobi" loading="lazy"
-                         onclick="openVehicleModal(${v.id})"
-                         style="cursor:pointer;"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML+='<div style=\\'display:flex;align-items:center;justify-content:center;height:100%;color:#e0a458;font-size:3rem;\\'><i class=\\'fas fa-car-side\\'></i></div>'">
-                </div>
-                <div class="vehicle-info">
-                    <h3 onclick="openVehicleModal(${v.id})" style="cursor:pointer;">${v.name}</h3>
-                    <div class="vehicle-specs">
-                        <span><i class="fas fa-calendar"></i> ${v.year}</span>
-                        <span><i class="fas fa-tachometer-alt"></i> ${v.mileage}</span>
-                        <span><i class="fas fa-gas-pump"></i> ${v.fuel}</span>
-                        <span><i class="fas fa-cogs"></i> ${v.transmission}</span>
-                    </div>
-                    <div class="vehicle-price-row">
-                        <div class="price">
-                            ${formatPrice(v.price)}
-                            <small>~ USD ${v.price.toLocaleString()}</small>
-                        </div>
-                        <button class="favorite-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite(${v.id}, this)" aria-label="Favorite">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="vehicle-actions">
-                        ${buttons}
-                        ${compareBtn}
-                    </div>
-                </div>
-            </article>`;
-    }).join('');
-}
-
-// ---- VEHICLE DETAILS MODAL ----
-let currentVehicleId = null;
-
-function openVehicleModal(id) {
-    const v = VEHICLES.find(x => x.id === id);
-    if (!v) return;
-    currentVehicleId = id;
-    addToRecentlyViewed(id);
-
-    const images = VEHICLE_GALLERIES[id] || [v.image];
-    document.getElementById('vdMainImg').src = images[0];
-    document.getElementById('vdMainImg').alt = v.name;
-
-    document.getElementById('vdThumbnails').innerHTML = images.map((img, idx) =>
-        `<img class="vd-thumb ${idx === 0 ? 'active' : ''}" src="${img}" onclick="switchMainImage('${img}', this)" alt="View ${idx + 1}">`
-    ).join('');
-
-    document.getElementById('vdInfo').innerHTML = `
-        <h2>${v.name}</h2>
-        <p style="color: var(--text-muted);"><i class="fas fa-map-marker-alt"></i> Available at Bunyala Rd, Nairobi</p>
-        <div class="vd-price">${formatPrice(v.price)}</div>
-        <p style="color: var(--text-muted); font-size: 0.85rem;">≈ USD ${v.price.toLocaleString()}</p>
-
-                <table class="vd-specs-table">
-            <tr><td>Year</td><td>${v.year}</td></tr>
-            <tr><td>Body Type</td><td>${v.body}</td></tr>
-            <tr><td>Transmission</td><td>${v.transmission}</td></tr>
-            <tr><td>Fuel</td><td>${v.fuel}</td></tr>
-            ${v.spec ? `<tr><td>Key Features</td><td style="font-size: 0.8rem; line-height: 1.5;">${v.spec}</td></tr>` : ''}
-            <tr><td>Status</td><td style="color: ${v.status === 'available' ? 'var(--success)' : 'var(--danger)'};">
-                ${v.status === 'available' ? '✓ Available Now' : 'Sold'}
-            </td></tr>
-            <tr><td>Warranty</td><td>12 Months</td></tr>
-            <tr><td>Inspection</td><td>150-Point Passed</td></tr>
-        </table>
-
-        <div class="vd-cta-row">
-            <button class="vd-btn vd-btn-primary" onclick="bookVehicle('${v.name.replace(/'/g, "\\'")}')">
-                <i class="fas fa-calendar-check"></i> Book Test Drive
-            </button>
-            <button class="vd-btn vd-btn-secondary" onclick="inquireVehicle('${v.name.replace(/'/g, "\\'")}')">
-                <i class="fas fa-phone"></i> Inquire
-            </button>
-        </div>
-        <div class="vd-cta-row" style="margin-top: 10px;">
-            <button class="vd-btn vd-share" onclick="shareVehicle('${v.name.replace(/'/g, "\\'")}', '${formatPrice(v.price)}')">
-                <i class="fab fa-whatsapp"></i> Share with a Friend
-            </button>
-        </div>
-    `;
-
-    document.getElementById('vdOverlay').classList.add('show');
-    document.body.style.overflow = 'hidden';
-}
-
-function switchMainImage(src, thumb) {
-    document.getElementById('vdMainImg').src = src;
-    document.querySelectorAll('.vd-thumb').forEach(t => t.classList.remove('active'));
-    thumb.classList.add('active');
-}
-
-function closeVehicleModal() {
-    document.getElementById('vdOverlay').classList.remove('show');
-    document.body.style.overflow = '';
-}
-
-function shareVehicle(name, price) {
-    const msg = `Check out this ${name} (${price}) at LIDMAS Auto Nairobi! https://lidmasauto.co.ke`;
-    window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-// ---- COMPARE FEATURE ----
-function toggleCompare(id) {
-    const idx = compareList.indexOf(id);
-    if (idx > -1) {
-        compareList.splice(idx, 1);
-    } else {
-        if (compareList.length >= 3) {
-            alert('You can compare up to 3 vehicles at once.');
-            return;
-        }
-        compareList.push(id);
-    }
-    updateCompareBar();
-    renderVehicles();
-}
-
-function updateCompareBar() {
-    const bar = document.getElementById('compareBar');
-    const slots = document.getElementById('compareSlots');
-    const goBtn = document.getElementById('compareGoBtn');
-
-    if (compareList.length > 0) {
-        bar.classList.add('show');
-    } else {
-        bar.classList.remove('show');
-    }
-
-    let html = '';
-    for (let i = 0; i < 3; i++) {
-        if (compareList[i]) {
-            const v = VEHICLES.find(x => x.id === compareList[i]);
-            html += `<div class="compare-slot filled">
-                <span style="flex:1;">${v.name.length > 20 ? v.name.substring(0, 18) + '…' : v.name}</span>
-                <button onclick="toggleCompare(${v.id})"><i class="fas fa-times"></i></button>
-            </div>`;
-        } else {
-            html += `<div class="compare-slot">+ Add vehicle</div>`;
-        }
-    }
-    slots.innerHTML = html;
-    goBtn.disabled = compareList.length < 2;
-}
-
-function clearCompare() {
-    compareList = [];
-    updateCompareBar();
-    renderVehicles();
-}
-
-function showCompare() {
-    if (compareList.length < 2) return;
-    const vehicles = compareList.map(id => VEHICLES.find(x => x.id === id)).filter(Boolean);
-
-    let html = '<thead><tr><th>Specs</th>';
-    vehicles.forEach(v => {
-        html += `<th><img src="${v.image}" alt="${v.name}"><br>${v.name}</th>`;
-    });
-    html += '</tr></thead><tbody>';
-
-    const specs = [
-        { label: 'Price', fn: v => formatPrice(v.price) },
-        { label: 'Year', fn: v => v.year },
-        { label: 'Mileage', fn: v => v.mileage },
-        { label: 'Fuel', fn: v => v.fuel },
-        { label: 'Transmission', fn: v => v.transmission },
-        { label: 'Body', fn: v => v.body },
-        { label: 'Status', fn: v => v.status === 'available' ? '✓ Available' : 'Sold' },
-        { label: 'Warranty', fn: () => '12 Months' }
-    ];
-
-    specs.forEach(spec => {
-        html += `<tr><td>${spec.label}</td>`;
-        vehicles.forEach(v => { html += `<td>${spec.fn(v)}</td>`; });
-        html += '</tr>';
-    });
-    html += '</tbody>';
-
-    document.getElementById('compareTable').innerHTML = html;
-    document.getElementById('compareOverlay').classList.add('show');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeCompare() {
-    document.getElementById('compareOverlay').classList.remove('show');
-    document.body.style.overflow = '';
-}
-
-// ---- RECENTLY VIEWED ----
-const RECENT_KEY = 'lidmas_recent';
-
-function addToRecentlyViewed(id) {
-    let recent = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
-    recent = recent.filter(x => x !== id);
-    recent.unshift(id);
-    recent = recent.slice(0, 6);
-    localStorage.setItem(RECENT_KEY, JSON.stringify(recent));
-    renderRecentlyViewed();
-}
-
-function renderRecentlyViewed() {
-    const recent = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
-    const section = document.getElementById('recentlyViewedSection');
-    const grid = document.getElementById('recentlyViewedGrid');
-
-    if (!recent.length) {
-        section.classList.remove('show');
-        return;
-s    }
-
-    section.classList.add('show');
-    grid.innerHTML = recent.map(id => {
-        const v = VEHICLES.find(x => x.id === id);
-        if (!v) return '';
-        return `<div class="rv-card" onclick="openVehicleModal(${v.id})">
-            <img src="${v.image}" alt="${v.name}">
-            <div class="rv-card-info">
-                <h4>${v.name}</h4>
-                <div class="rv-price">${formatPrice(v.price)}</div>
-            </div>
-        </div>`;
-    }).join('');
-}
-
-// ---- TRADE-IN ESTIMATOR ----
-function estimateTradeIn() {
-    const make = document.getElementById('tradeMake').value.trim();
-    const model = document.getElementById('tradeModel').value.trim();
-    const year = parseInt(document.getElementById('tradeYear').value);
-    const mileage = parseInt(document.getElementById('tradeMileage').value);
-    const condition = document.getElementById('tradeCondition').value;
-
-    if (!make || !model || !year || !mileage) {
-        alert('Please fill in all fields to get an estimate.');
-        return;
-    }
-
-    // Simple estimation algorithm
-    const age = new Date().getFullYear() - year;
-    let baseValue = 30000; // Base in USD
-    baseValue -= age * 1500; // Depreciation per year
-    baseValue -= mileage * 0.05; // Depreciation per km
-
-    const conditionMultiplier = { excellent: 1.15, good: 1.0, fair: 0.85, poor: 0.65 };
-    baseValue *= conditionMultiplier[condition];
-
-    if (baseValue < 2000) baseValue = 2000;
-
-    const low = Math.round(baseValue * 0.85) * 130;
-    const high = Math.round(baseValue * 1.15) * 130;
-
-    document.getElementById('tradeinRange').textContent = `KES ${low.toLocaleString()} — ${high.toLocaleString()}`;
-    document.getElementById('tradeinResult').classList.add('show');
-    document.getElementById('tradeinResult').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-// ---- SUCCESS STORIES BLOG ----
-const BLOG_POSTS = [
-    {
-        image: "images/blogs/fortuner.jpg",
-        category: "Customer Story",
-        title: "How a Family Found Their Perfect 7-Seater Fortuner",
-        excerpt: "From browsing our site to driving off the lot — read how a Nairobi family found the perfect SUV with financing approved in 48 hours.",
-        date: "2 weeks ago",
-        readTime: "4 min read"
-    },
-    {
-        image: "images/blogs/ev car.jpg",
-        category: "Buying Guide",
-        title: "Hybrid Cars in Kenya: Everything You Need to Know",
-        excerpt: "Fuel savings, battery life, maintenance costs — the complete guide to buying a hybrid like the Toyota Aqua in Kenya.",
-        date: "1 month ago",
-        readTime: "6 min read"
-    },
-    {
-        image: "images/blogs/car financing.jpg",
-        category: "Financing Tips",
-        title: "How to Finance Your First Car in Kenya (2026 Guide)",
-        excerpt: "Complete guide to car financing in Kenya — banks vs SACCOs, interest rates, and how to get approved.",
-        date: "1 month ago",
-        readTime: "8 min read"
-    }
-];
-
-function renderBlog() {
-    document.getElementById('blogGrid').innerHTML = BLOG_POSTS.map(post => `
-        <article class="blog-card" onclick="alert('Full article coming soon! Call 0720 443416 to learn more.')">
-            <img src="${post.image}" alt="${post.title}" loading="lazy">
-            <div class="blog-card-content">
-                <span class="blog-category">${post.category}</span>
-                <h3>${post.title}</h3>
-                <p>${post.excerpt}</p>
-                <div class="blog-meta"><i class="far fa-clock"></i> ${post.date} • ${post.readTime}</div>
-            </div>
-        </article>
-    `).join('');
-}
-
-// ---- COUNTDOWN TIMER (Hot Deals Urgency) ----
-function startCountdown() {
-    const endTime = new Date().getTime() + (72 * 60 * 60 * 1000); // 72 hours from now
-    setInterval(() => {
-        const now = new Date().getTime();
-        const distance = endTime - now;
-        if (distance < 0) return;
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const secs = Math.floor((distance % (1000 * 60)) / 1000);
-        const el = document.getElementById('countdownTimer');
-        if (el) el.textContent = `${days}d ${hours}h ${mins}m ${secs}s`;
-    }, 1000);
-}
-
-// ============================================================
-// INIT — add these to your existing DOMContentLoaded
-// ============================================================
-document.addEventListener('DOMContentLoaded', () => {
-    renderBlog();
-    renderRecentlyViewed();
-    startCountdown();
-    updateCompareBar();
 
     // Close modals on outside click
     document.getElementById('vdOverlay')?.addEventListener('click', (e) => {
