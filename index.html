@@ -850,17 +850,55 @@
     width: 100%; height: 100%; min-height: 400px;
     object-fit: cover; display: block;
 }
+
 .vd-thumbnails {
-    position: absolute; bottom: 15px; left: 15px; right: 15px;
-    display: flex; gap: 8px; justify-content: center;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    scrollbar-width: thin;
+}
+.vd-thumbnails::-webkit-scrollbar {
+    height: 4px;
+}
+.vd-thumbnails::-webkit-scrollbar-thumb {
+    background: var(--terracotta);
+    border-radius: 4px;
 }
 .vd-thumb {
-    width: 60px; height: 45px; border-radius: 8px;
-    object-fit: cover; cursor: pointer;
-    border: 2px solid transparent; opacity: 0.6;
+    width: 60px;
+    height: 45px;
+    border-radius: 8px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    opacity: 0.6;
     transition: all 0.3s;
+    flex-shrink: 0;
 }
-.vd-thumb:hover, .vd-thumb.active { opacity: 1; border-color: var(--terracotta); }
+.vd-thumb:hover, .vd-thumb.active {
+    opacity: 1;
+    border-color: var(--terracotta);
+}
+
+.vd-photo-count {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(15, 61, 46, 0.85);
+    color: var(--cream);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 5;
+}
+
 .vd-info { padding: 35px; overflow-y: auto; max-height: 90vh; }
 .vd-info h2 { color: var(--forest); margin-bottom: 8px; font-size: 1.8rem; }
 .vd-info .vd-price { font-size: 2rem; font-weight: 800; color: var(--terracotta); margin: 15px 0; }
@@ -1785,6 +1823,7 @@
         <div class="vd-grid">
             <div class="vd-images">
                 <img class="vd-main-img" id="vdMainImg" src="" alt="">
+                <div class="vd-photo-count" id="vdPhotoCount">1 / 6</div>
                 <div class="vd-thumbnails" id="vdThumbnails"></div>
             </div>
             <div class="vd-info" id="vdInfo"></div>
@@ -1944,7 +1983,7 @@
 
 <script>
 // ============================================================
-// ⚠️  INVENTORY DATA — THIS IS WHAT YOU EDIT TO UPDATE STOCK
+// ⚠️  INVENTORY DATA — EDIT TO UPDATE STOCK
 // ============================================================
 // Prices are in KES (kshPrice is the single source of truth).
 // To mark a car as sold: change status: "available" → "sold"
@@ -1961,6 +2000,16 @@ const VEHICLES = [
         image: "images/vehicles/toyota-mark-x-1.jpg",
         spec: "2500cc • Push to start • Keyless entry • New rims • Original paint"
     },
+
+    {
+        id: 15, name: "Toyota Rav 4", year: 2015, price: 20385, kshPrice: 2650000,
+        mileage: "2400cc", fuel: "Petrol", transmission: "Automatic", body: "SUV",
+        status: "available", hot: true,
+        image: "images/vehicles/toyota-rav4-1.jpg",
+        spec: "2400cc • Sunroof • Electric leather seats • Neat dark interior • Parking sensors • 4WD • Power boot"
+    },
+
+
     {
         id: 3, name: "Subaru Forester", year: 2012, kshPrice: 1480000, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "SUV", status: "available", hot: false,
         image: "images/vehicles/subaru-forester-2012-1.jpg",
@@ -2006,11 +2055,34 @@ const VEHICLES = [
         image: "images/vehicles/subaru-forester-2015-1.jpg",
         spec: "2000cc • Welcab lift seat • Neat interior • Original paint"
     },
+
+     {
+        id: 13, name: "Toyota Hiace 9L (2014)", year: 2014, price: 27690, kshPrice: 3600000,
+        mileage: "2700cc", fuel: "Petrol", transmission: "Manual 5-Speed", body: "Van",
+        status: "sold", hot: false,
+        image: "images/vehicles/toyota-hiace-2014-1.jpg",
+        spec: "2700cc • Petrol • 16 Seater • Manual 5-Speed • Low mileage • Accident free"
+    },
+    {
+        id: 14, name: "Toyota Hiace 7L Tour Van", year: 2013, price: 20385, kshPrice: 2650000,
+        mileage: "3000cc", fuel: "Diesel", transmission: "Manual", body: "Van",
+        status: "available", hot: true,
+        image: "images/vehicles/toyota-hiace-7l-1.jpg",
+        spec: "3000cc • 1KD Engine • 9 Seater • Original paint • Tour Van"
+    },
+
     {
         id: 12, name: "Toyota Succeed", year: 2018, kshPrice: 1280000, mileage: "Petrol", fuel: "Petrol", transmission: "Automatic", body: "Van", status: "available", hot: false,
         image: "images/vehicles/toyota-succeed-1.jpg",
         spec: "1500cc • 2WD • Original paint • Accident free"
+    },
+
+     {
+        id: 15, name: "subaru forester", year: 2012, kshPrice: 1350000, mileage: "161456", fuel: "Petrol", transmission: "Automatic", body: "suv", status: "available", hot: false,
+        image: "images/vehicles/subaru-forester-1.jpg",
+        spec: "2000cc • AWD • Original paint • Accident free • Neat dark fabric interior"
     }
+
 ];
 
 const GALLERY = [
@@ -2229,18 +2301,126 @@ function calculateLoan() {
 let currentVehicleId = null;
 
 const VEHICLE_GALLERIES = {
-    1: ["images/vehicles/toyota-aqua-1.jpg", "images/vehicles/toyota-aqua-2.jpg"],
-    2: ["images/vehicles/toyota-mark-x-1.jpg", "images/vehicles/toyota-mark-x-2.jpg"],
-    3: ["images/vehicles/subaru-forester-2012-1.jpg", "images/vehicles/subaru-forester-2012-2.jpg"],
-    4: ["images/vehicles/toyota-hiace-1.jpg", "images/vehicles/toyota-hiace-2.jpg", "images/vehicles/toyota-hiace-3.jpg"],
-    5: ["images/vehicles/subaru-forester-2006-1.jpg", "images/vehicles/subaru-forester-2006-2.jpg"],
-    6: ["images/vehicles/toyota-vanguard-1.jpg", "images/vehicles/toyota-vanguard-2.jpg"],
-    7: ["images/vehicles/toyota-fortuner-1.jpg", "images/vehicles/toyota-fortuner-2.jpg"],
-    8: ["images/vehicles/toyota-rush-1.jpg", "images/vehicles/toyota-rush-2.jpg"],
-    9: ["images/vehicles/toyota-vitz-1.jpg", "images/vehicles/toyota-vitz-2.jpg"],
-    10: ["images/vehicles/toyota-premio-1.jpg", "images/vehicles/toyota-premio-2.jpg"],
-    11: ["images/vehicles/subaru-forester-2015-1.jpg", "images/vehicles/subaru-forester-2015-2.jpg"],
-    12: ["images/vehicles/toyota-succeed-1.jpg", "images/vehicles/toyota-succeed-2.jpg"]
+    1: [
+        "images/vehicles/toyota-aqua-1.jpg",
+        "images/vehicles/toyota-aqua-2.jpg",
+        "images/vehicles/toyota-aqua-3.jpg",
+        "images/vehicles/toyota-aqua-4.jpg",
+        "images/vehicles/toyota-aqua-5.jpg",
+        "images/vehicles/toyota-aqua-6.jpg"
+    ],
+    2: [
+        "images/vehicles/toyota-mark-x-1.jpg",
+        "images/vehicles/toyota-mark-x-2.jpg",
+        "images/vehicles/toyota-mark-x-3.jpg",
+        "images/vehicles/toyota-mark-x-4.jpg",
+        "images/vehicles/toyota-mark-x-5.jpg",
+        "images/vehicles/toyota-mark-x-6.jpg"
+    ],
+    3: [
+        "images/vehicles/subaru-forester-2012-1.jpg",
+        "images/vehicles/subaru-forester-2012-2.jpg",
+        "images/vehicles/subaru-forester-2012-3.jpg",
+        "images/vehicles/subaru-forester-2012-4.jpg",
+        "images/vehicles/subaru-forester-2012-5.jpg",
+        "images/vehicles/subaru-forester-2012-6.jpg"
+    ],
+    4: [
+        "images/vehicles/toyota-hiace-1.jpg",
+        "images/vehicles/toyota-hiace-2.jpg",
+        "images/vehicles/toyota-hiace-3.jpg",
+        "images/vehicles/toyota-hiace-4.jpg",
+        "images/vehicles/toyota-hiace-5.jpg",
+        "images/vehicles/toyota-hiace-6.jpg"
+    ],
+    5: [
+        "images/vehicles/subaru-forester-2006-1.jpg",
+        "images/vehicles/subaru-forester-2006-2.jpg",
+        "images/vehicles/subaru-forester-2006-3.jpg",
+        "images/vehicles/subaru-forester-2006-4.jpg",
+        "images/vehicles/subaru-forester-2006-5.jpg",
+        "images/vehicles/subaru-forester-2006-6.jpg"
+    ],
+    6: [
+        "images/vehicles/toyota-vanguard-1.jpg",
+        "images/vehicles/toyota-vanguard-2.jpg",
+        "images/vehicles/toyota-vanguard-3.jpg",
+        "images/vehicles/toyota-vanguard-4.jpg",
+        "images/vehicles/toyota-vanguard-5.jpg",
+        "images/vehicles/toyota-vanguard-6.jpg"
+    ],
+    7: [
+        "images/vehicles/toyota-fortuner-1.jpg",
+        "images/vehicles/toyota-fortuner-2.jpg",
+        "images/vehicles/toyota-fortuner-3.jpg",
+        "images/vehicles/toyota-fortuner-4.jpg",
+        "images/vehicles/toyota-fortuner-5.jpg",
+        "images/vehicles/toyota-fortuner-6.jpg"
+    ],
+    8: [
+        "images/vehicles/toyota-rush-1.jpg",
+        "images/vehicles/toyota-rush-2.jpg",
+        "images/vehicles/toyota-rush-3.jpg",
+        "images/vehicles/toyota-rush-4.jpg",
+        "images/vehicles/toyota-rush-5.jpg",
+        "images/vehicles/toyota-rush-6.jpg"
+    ],
+    9: [
+        "images/vehicles/toyota-vitz-1.jpg",
+        "images/vehicles/toyota-vitz-2.jpg",
+        "images/vehicles/toyota-vitz-3.jpg",
+        "images/vehicles/toyota-vitz-4.jpg",
+        "images/vehicles/toyota-vitz-5.jpg",
+        "images/vehicles/toyota-vitz-6.jpg"
+    ],
+    10: [
+        "images/vehicles/toyota-premio-1.jpg",
+        "images/vehicles/toyota-premio-2.jpg",
+        "images/vehicles/toyota-premio-3.jpg",
+        "images/vehicles/toyota-premio-4.jpg",
+        "images/vehicles/toyota-premio-5.jpg",
+        "images/vehicles/toyota-premio-6.jpg"
+    ],
+    11: [
+        "images/vehicles/subaru-forester-2015-1.jpg",
+        "images/vehicles/subaru-forester-2015-2.jpg",
+        "images/vehicles/subaru-forester-2015-3.jpg",
+        "images/vehicles/subaru-forester-2015-4.jpg",
+        "images/vehicles/subaru-forester-2015-5.jpg",
+        "images/vehicles/subaru-forester-2015-6.jpg"
+    ],
+    12: [
+        "images/vehicles/toyota-succeed-1.jpg",
+        "images/vehicles/toyota-succeed-2.jpg",
+        "images/vehicles/toyota-succeed-3.jpg",
+        "images/vehicles/toyota-succeed-4.jpg",
+        "images/vehicles/toyota-succeed-5.jpg",
+        "images/vehicles/toyota-succeed-6.jpg"
+    ],
+    13: [
+        "images/vehicles/toyota-hiace-2014-1.jpg",
+        "images/vehicles/toyota-hiace-2014-2.jpg",
+        "images/vehicles/toyota-hiace-2014-3.jpg",
+        "images/vehicles/toyota-hiace-2014-4.jpg",
+        "images/vehicles/toyota-hiace-2014-5.jpg",
+        "images/vehicles/toyota-hiace-2014-6.jpg"
+    ],
+    14: [
+        "images/vehicles/toyota-hiace-7l-1.jpg",
+        "images/vehicles/toyota-hiace-7l-2.jpg",
+        "images/vehicles/toyota-hiace-7l-3.jpg",
+        "images/vehicles/toyota-hiace-7l-4.jpg",
+        "images/vehicles/toyota-hiace-7l-5.jpg",
+        "images/vehicles/toyota-hiace-7l-6.jpg"
+    ],
+    15: [
+        "images/vehicles/toyota-rav4-1.jpg",
+        "images/vehicles/toyota-rav4-2.jpg",
+        "images/vehicles/toyota-rav4-3.jpg",
+        "images/vehicles/toyota-rav4-4.jpg",
+        "images/vehicles/toyota-rav4-5.jpg",
+        "images/vehicles/toyota-rav4-6.jpg"
+    ]
 };
 
 function openVehicleModal(id) {
@@ -2250,12 +2430,14 @@ function openVehicleModal(id) {
     addToRecentlyViewed(id);
 
     const images = VEHICLE_GALLERIES[id] || [v.image];
-    document.getElementById('vdMainImg').src = images[0];
-    document.getElementById('vdMainImg').alt = v.name;
+document.getElementById('vdMainImg').src = images[0];
+document.getElementById('vdMainImg').alt = v.name;
 
-    document.getElementById('vdThumbnails').innerHTML = images.map((img, idx) =>
-        `<img class="vd-thumb ${idx === 0 ? 'active' : ''}" src="${img}" onclick="switchMainImage('${img}', this)" alt="View ${idx + 1}">`
-    ).join('');
+document.getElementById('vdPhotoCount').textContent = `1 / ${images.length}`;
+
+document.getElementById('vdThumbnails').innerHTML = images.map((img, idx) =>
+    `<img class="vd-thumb ${idx === 0 ? 'active' : ''}" src="${img}" onclick="switchMainImage('${img}', this)" alt="View ${idx + 1}">`
+).join('');
 
     document.getElementById('vdInfo').innerHTML = `
         <h2>${v.name}</h2>
@@ -2298,6 +2480,10 @@ function switchMainImage(src, thumb) {
     document.getElementById('vdMainImg').src = src;
     document.querySelectorAll('.vd-thumb').forEach(t => t.classList.remove('active'));
     thumb.classList.add('active');
+    const thumbs = Array.from(document.querySelectorAll('.vd-thumb'));
+    const idx = thumbs.indexOf(thumb) + 1;
+    const counter = document.getElementById('vdPhotoCount');
+    if (counter) counter.textContent = `${idx} / ${thumbs.length}`;
 }
 
 function closeVehicleModal() {
