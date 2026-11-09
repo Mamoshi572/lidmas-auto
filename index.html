@@ -46,7 +46,7 @@
       "logo": "https://lidmasauto.co.ke/logo.png",
       "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "description": "Trusted car dealership in Nairobi, Kenya.",
-      "telephone": "+254788403734",
+      "telephone": "+254793788305",
       "priceRange": "KES 500,000 - KES 20,000,000",
       "currenciesAccepted": "KES",
       "address": {
@@ -833,7 +833,7 @@
 <!-- TOP BAR -->
 <div class="top-bar">
     <div class="container">
-        <i class="fas fa-phone"></i> 0788 403734 | 0797 986648
+        <i class="fas fa-phone"></i> 0793 788305 | 0797 986648 | 0788 403734
         &nbsp;|&nbsp;
         <i class="fas fa-map-marker-alt"></i> Bunyala Rd, Nairobi
         &nbsp;|&nbsp;
@@ -1056,8 +1056,9 @@
                 <div style="background: rgba(245,240,230,0.1); border: 1px solid var(--gold-warm); border-radius: 15px; padding: 20px; margin-top: 25px;">
                     <h4 style="color: var(--gold-warm); margin-bottom: 10px;"><i class="fas fa-phone"></i> Prefer to Call?</h4>
                     <p style="color: rgba(245,240,230,0.8); font-size: 0.9rem;">Reach us directly:</p>
-                    <p style="color: var(--cream); font-weight: 700; font-size: 1.2rem; margin-top: 8px;">📞 0788 403734</p>
+                    <p style="color: var(--cream); font-weight: 700; font-size: 1.2rem; margin-top: 8px;">📞 0793 788305</p>
                     <p style="color: var(--cream); font-weight: 700; font-size: 1.2rem; margin-top: 8px;">📞 0797 986648</p>
+                    <p style="color: var(--cream); font-weight: 700; font-size: 1.2rem; margin-top: 8px;">💬 WhatsApp: 0788 403734</p>
                 </div>
             </div>
             <div class="form-card">
@@ -1483,9 +1484,9 @@
         <div class="visit-grid">
             <div class="visit-info">
                 <div class="visit-line"><i class="fas fa-map-marker-alt"></i><div><h4>Our Location</h4><p>Bunyala Road, Nairobi, Kenya</p></div></div>
-                <div class="visit-line"><i class="fas fa-phone"></i><div><h4>Call Us</h4><p><a href="tel:+254788403734">0788 403734</a> · <a href="tel:+254797986648">0797 986648</a></p></div></div>
+                <div class="visit-line"><i class="fas fa-phone"></i><div><h4>Call Us</h4><p><a href="tel:+254793788305">0793 788305</a> · <a href="tel:+254797986648">0797 986648</a></p></div></div>
                 <div class="visit-line"><i class="fas fa-clock"></i><div><h4>Opening Hours</h4><p>Mon–Sun: 7am–7pm · Holidays: 9am–4pm</p></div></div>
-                <div class="visit-line"><i class="fab fa-whatsapp"></i><div><h4>WhatsApp</h4><p><a href="https://wa.me/254788403734" target="_blank" rel="noopener">Chat with us instantly</a></p></div></div>
+                <div class="visit-line"><i class="fab fa-whatsapp"></i><div><h4>WhatsApp</h4><p><a href="https://wa.me/254788403734" target="_blank" rel="noopener">Chat with us instantly — 0788 403734</a></p></div></div>
                 <a href="https://www.google.com/maps/dir/?api=1&destination=LIDMAS+Auto+Limited+Bunyala+Road+Nairobi" target="_blank" rel="noopener" class="visit-directions-btn"><i class="fas fa-route"></i> Get Directions</a>
             </div>
             <div class="visit-map">
@@ -1515,8 +1516,9 @@
             <div class="footer-col">
                 <h4>Contact Us</h4>
                 <p><i class="fas fa-map-marker-alt"></i> Bunyala Rd, Nairobi</p>
-                <p><i class="fas fa-phone"></i> 0788 403734</p>
+                <p><i class="fas fa-phone"></i> 0793 788305</p>
                 <p><i class="fas fa-phone"></i> 0797 986648</p>
+                <p><i class="fab fa-whatsapp"></i> WhatsApp: 0788 403734</p>
                 <p><i class="fas fa-envelope"></i> info@lidmasautos.co.ke</p>
                 <p><i class="fas fa-clock"></i> Mon–Sun: 7am–7pm</p>
                 <p><i class="fas fa-clock"></i> holidays: 9am-4pm</p>
@@ -1567,16 +1569,24 @@
 
 <script>
 // ============================================================
-// CONSTANTS — SINGLE WHATSAPP NUMBER (0788 403 734)
+// PHONE NUMBERS — ROLE SEPARATION
 // ============================================================
-const WA_NUMBER = '254788403734';
+// WA_NUMBER  → floating WhatsApp button + vehicle inquiries ONLY
+// CALL_1     → all other calls / bookings / contact info (primary)
+// CALL_2     → secondary number shown alongside CALL_1
+// ============================================================
+const WA_NUMBER  = '254788403734';   // 0788 403734 — WhatsApp & inquiries
 const WA_DISPLAY = '0788 403734';
+const CALL_1_NUMBER  = '254793788305'; // 0793 788305 — main office line
+const CALL_1_DISPLAY = '0793 788305';
+const CALL_2_NUMBER  = '254797986648'; // 0797 986648 — secondary line
+const CALL_2_DISPLAY = '0797 986648';
 
 // ============================================================
 // INVENTORY DATA
 // ============================================================
 const VEHICLES = [
-    // NEW: Toyota Probox (2018, 1500cc, 2WD, KES 1.28M) — shown first
+    // Toyota Probox (2018, 1500cc, 2WD, KES 1.28M) — shown first
     { id:18, name:"Toyota Probox",               year:2018, kshPrice:1280000, mileage:"120,964 km",fuel:"Petrol",     transmission:"Automatic",       body:"Van",       status:"available", hot:true,  image:"images/vehicles/toyota-probox-1.jpg",            spec:"1500cc • 2WD • Original paint • Accident free • Dark neat interior • Spacious • Well maintained" },
     { id:1,  name:"Toyota Aqua",                 year:2018, kshPrice:1380000, mileage:"Hybrid",   fuel:"Hybrid",     transmission:"Automatic",       body:"Hatchback", status:"available", hot:true,  image:"images/vehicles/toyota-aqua-1.jpg",              spec:"1500cc • Hybrid • Original paint • Accident free" },
     { id:2,  name:"Toyota Mark X",               year:2012, kshPrice:1380000, mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"Sedan",     status:"available", hot:false, image:"images/vehicles/toyota-mark-x-1.jpg",            spec:"2500cc • Push to start • Keyless entry • New rims • Original paint" },
@@ -1598,7 +1608,7 @@ const VEHICLES = [
 ];
 
 // ============================================================
-// INVENTORY VALIDATION — catches duplicate / missing IDs early
+// INVENTORY VALIDATION
 // ============================================================
 (function validateInventory() {
     const problems = [];
@@ -1658,7 +1668,6 @@ const REVIEWS = [
     { name:"Andrew Chelule", rating:5, date:"a year ago", initial:"AC", text:"Great experience buying my car here. Smooth process from start to finish." }
 ];
 
-// Image galleries for quick view modal
 const VEHICLE_GALLERIES = {
     18: ["images/vehicles/toyota-probox-1.jpg","images/vehicles/toyota-probox-2.jpg","images/vehicles/toyota-probox-3.jpg","images/vehicles/toyota-probox-4.jpg","images/vehicles/toyota-probox-5.jpg","images/vehicles/toyota-probox-6.jpg"],
     1: ["images/vehicles/toyota-aqua-1.jpg","images/vehicles/toyota-aqua-2.jpg","images/vehicles/toyota-aqua-3.jpg","images/vehicles/toyota-aqua-4.jpg","images/vehicles/toyota-aqua-5.jpg","images/vehicles/toyota-aqua-6.jpg"],
@@ -1693,9 +1702,6 @@ let currentVehicleId = null;
 
 try { favorites = JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]'); } catch(e) { favorites = []; }
 
-// ============================================================
-// HELPERS
-// ============================================================
 function formatPrice(priceKES) {
     return 'KES ' + Number(priceKES).toLocaleString();
 }
@@ -1704,9 +1710,6 @@ function escAttr(s) {
     return String(s).replace(/'/g, "&#39;").replace(/"/g, "&quot;");
 }
 
-// ============================================================
-// RENDER VEHICLES
-// ============================================================
 function renderVehicles() {
     let list = VEHICLES.slice();
 
@@ -1776,9 +1779,6 @@ function renderVehicles() {
     }).join('');
 }
 
-// ============================================================
-// RENDER GALLERY
-// ============================================================
 function renderGallery() {
     document.getElementById('galleryGrid').innerHTML = GALLERY.map(g => `
         <div class="gallery-item">
@@ -1787,9 +1787,6 @@ function renderGallery() {
         </div>`).join('');
 }
 
-// ============================================================
-// RENDER REVIEWS
-// ============================================================
 function renderReviews() {
     document.getElementById('reviewsGrid').innerHTML = REVIEWS.map(r => `
         <div class="review-card">
@@ -1802,9 +1799,6 @@ function renderReviews() {
         </div>`).join('');
 }
 
-// ============================================================
-// INTERACTIONS
-// ============================================================
 function toggleFavorite(id, btn) {
     const idx = favorites.indexOf(id);
     if (idx > -1) { favorites.splice(idx, 1); btn.classList.remove('active'); }
@@ -1828,6 +1822,7 @@ function bookVehicle(name) {
     setTimeout(() => document.getElementById('appName').focus(), 800);
 }
 
+// INQUIRY → goes to WhatsApp number (0788 403734)
 function inquireVehicle(name) {
     const msg = `Hi LIDMAS Auto, I'm interested in the ${name}. Could you share more details?`;
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
@@ -1864,9 +1859,6 @@ function calculateLoan() {
         `Total: KES ${Math.round(monthly * term + down).toLocaleString()} • Interest: KES ${Math.round(monthly * term - principal).toLocaleString()}`;
 }
 
-// ============================================================
-// VEHICLE DETAILS MODAL — images fit properly now
-// ============================================================
 function openVehicleModal(id) {
     const v = VEHICLES.find(x => x.id === id);
     if (!v) return;
@@ -1936,9 +1928,6 @@ function shareVehicle(name, price) {
     window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
-// ============================================================
-// COMPARE
-// ============================================================
 function toggleCompare(id) {
     const idx = compareList.indexOf(id);
     if (idx > -1) compareList.splice(idx, 1);
@@ -2012,9 +2001,6 @@ function closeCompare() {
     document.body.style.overflow = '';
 }
 
-// ============================================================
-// RECENTLY VIEWED
-// ============================================================
 function addToRecentlyViewed(id) {
     let recent = [];
     try { recent = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]'); } catch(e) {}
@@ -2042,9 +2028,6 @@ function renderRecentlyViewed() {
     }).join('');
 }
 
-// ============================================================
-// TRADE-IN
-// ============================================================
 function estimateTradeIn() {
     const make = document.getElementById('tradeMake').value.trim();
     const model = document.getElementById('tradeModel').value.trim();
@@ -2069,9 +2052,6 @@ function estimateTradeIn() {
     document.getElementById('tradeinResult').scrollIntoView({ behavior:'smooth', block:'nearest' });
 }
 
-// ============================================================
-// BLOG
-// ============================================================
 const BLOG_POSTS = [
     { image:"images/blogs/fortuner.jpg", category:"Customer Story", title:"How a Family Found Their Perfect 7-Seater Fortuner", excerpt:"From browsing our site to driving off the lot — read how a Nairobi family found the perfect SUV with financing approved in 48 hours.", date:"2 weeks ago", readTime:"4 min read" },
     { image:"images/blogs/ev car.jpg", category:"Buying Guide", title:"Hybrid Cars in Kenya: Everything You Need to Know", excerpt:"Fuel savings, battery life, maintenance costs — the complete guide to buying a hybrid like the Toyota Aqua in Kenya.", date:"1 month ago", readTime:"6 min read" },
@@ -2080,7 +2060,7 @@ const BLOG_POSTS = [
 
 function renderBlog() {
     document.getElementById('blogGrid').innerHTML = BLOG_POSTS.map(post => `
-        <article class="blog-card" onclick="alert('Full article coming soon! Call ${WA_DISPLAY} to learn more.')">
+        <article class="blog-card" onclick="alert('Full article coming soon! Call ${CALL_1_DISPLAY} to learn more.')">
             <img src="${post.image}" alt="${post.title}" loading="lazy" decoding="async">
             <div class="blog-card-content">
                 <span class="blog-category">${post.category}</span>
@@ -2092,9 +2072,6 @@ function renderBlog() {
     `).join('');
 }
 
-// ============================================================
-// EVENTS + INIT
-// ============================================================
 document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -2116,6 +2093,7 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     });
 });
 
+// BOOKING FORM → goes to WhatsApp number (0788 403734)
 document.getElementById('appointmentForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const name = document.getElementById('appName').value;
