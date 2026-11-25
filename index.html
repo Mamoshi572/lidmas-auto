@@ -77,19 +77,19 @@
 
     <style>
         :root {
-    --navy: #0b1f3a; --navy-deep: #061428; --navy-light: #143257;
-    --teal: #0ea5a4; --teal-light: #2dd4bf; --teal-dark: #0b7f7e;
-    --ivory: #f8f7f4; --ivory-soft: #ece9e1;
-    --amber: #f59e0b; --amber-dark: #d97706; --amber-soft: #fcd34d;
-    --text-dark: #101828; --text-muted: #5b6577; --text-light: #f8f7f4;
-    --success: #22c55e; --danger: #ef4444;
+            --navy: #0b1f3a; --navy-deep: #061428; --navy-light: #143257;
+            --teal: #0ea5a4; --teal-light: #2dd4bf; --teal-dark: #0b7f7e;
+            --ivory: #f8f7f4; --ivory-soft: #ece9e1;
+            --amber: #f59e0b; --amber-dark: #d97706; --amber-soft: #fcd34d;
+            --text-dark: #101828; --text-muted: #5b6577; --text-light: #f8f7f4;
+            --success: #22c55e; --danger: #ef4444;
 
-    --forest: var(--navy); --forest-deep: var(--navy-deep); --forest-light: var(--navy-light);
-    --emerald: var(--teal); --emerald-light: var(--teal-light);
-    --cream: var(--ivory); --cream-soft: var(--ivory-soft);
-    --terracotta: var(--amber); --terracotta-dark: var(--amber-dark);
-    --gold-warm: var(--amber-soft);
-}
+            --forest: var(--navy); --forest-deep: var(--navy-deep); --forest-light: var(--navy-light);
+            --emerald: var(--teal); --emerald-light: var(--teal-light);
+            --cream: var(--ivory); --cream-soft: var(--ivory-soft);
+            --terracotta: var(--amber); --terracotta-dark: var(--amber-dark);
+            --gold-warm: var(--amber-soft);
+        }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -128,15 +128,45 @@
         }
         @media (max-width: 768px) { .parallax { background-attachment: scroll; } }
 
-        .bg-hero       { background-image: url('images/hero/hero-main.jpg'); }
-        .bg-trust      { background-image: url('https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&w=1600'); }
-        .bg-inventory  { background-image: url('https://images.pexels.com/photos/193991/pexels-photo-193991.jpeg?auto=compress&cs=tinysrgb&w=1600'); }
-        .bg-financing  { background-image: url('https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&cs=tinysrgb&w=1600'); }
-        .bg-gallery    { background-image: url('https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg?auto=compress&cs=tinysrgb&w=1600'); }
-        .bg-appointment{ background-image: url('https://images.pexels.com/photos/3752169/pexels-photo-3752169.jpeg?auto=compress&cs=tinysrgb&w=1600'); }
-        .bg-reviews    { background-image: url('https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=1600'); }
-        .bg-faq        { background-image: url('https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg?auto=compress&cs=tinysrgb&w=1600'); }
-        .bg-contact    { background-image: url('https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1600'); }
+        /* ===== HERO VIDEO BACKGROUND ===== */
+        .hero {
+            position: relative;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: #061428;
+        }
+        .hero-video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
+            background: linear-gradient(135deg, rgba(11,31,58,0.85), rgba(6,20,40,0.75));
+        }
+        .hero .container.hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== BACKGROUND PHOTOS (one per section) ===== */
+        .bg-trust      { background-image: url('images/backgrounds/trust.jpg'); }
+        .bg-inventory  { background-image: url('images/backgrounds/inventory.jpg'); }
+        .bg-financing  { background-image: url('images/backgrounds/financing.jpg'); }
+        .bg-gallery    { background-image: url('images/backgrounds/gallery.jpg'); }
+        .bg-appointment{ background-image: url('images/backgrounds/appointment.jpg'); }
+        .bg-reviews    { background-image: url('images/backgrounds/reviews.jpg'); }
+        .bg-faq        { background-image: url('images/backgrounds/faq.jpg'); }
+        .bg-contact    { background-image: url('images/backgrounds/contact.jpg'); }
+        .bg-matatus    { background-image: url('images/backgrounds/matatus.jpg'); }
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
@@ -863,8 +893,14 @@
     </div>
 </header>
 
-<!-- HERO -->
-<section class="hero parallax bg-hero" id="home">
+<!-- HERO (video background) -->
+<section class="hero" id="home">
+    <video class="hero-video" autoplay muted loop playsinline
+           poster="images/hero/hero-main.jpg"
+           aria-hidden="true">
+        <source src="images/hero/hero-loop.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
     <div class="container hero-content">
         <div class="hero-badge">
             <i class="fas fa-star" style="color: var(--gold-warm);"></i>
@@ -878,7 +914,7 @@
         <div class="hero-badges">
             <div class="badge-item"><i class="fas fa-check-circle"></i>Delivery</div>
             <div class="badge-item"><i class="fas fa-shield-alt"></i>Trade-in Accepted</div>
-            <div class="badge-item"><i class="fas fa-hand-holding-usd"></i> Flexible car Financing</div>
+            <div class="badge-item"><i class="fas fa-hand-holding-usd"></i>Flexible car Financing</div>
         </div>
         <div class="hero-cta">
             <a href="#inventory" class="btn-hero-primary"><i class="fas fa-car"></i> Browse our Inventory</a>
@@ -1571,22 +1607,36 @@
 // ============================================================
 // PHONE NUMBERS — ROLE SEPARATION
 // ============================================================
-// WA_NUMBER  → floating WhatsApp button + vehicle inquiries ONLY
-// CALL_1     → all other calls / bookings / contact info (primary)
-// CALL_2     → secondary number shown alongside CALL_1
-// ============================================================
-const WA_NUMBER  = '254788403734';   // 0788 403734 — WhatsApp & inquiries
+const WA_NUMBER  = '254788403734';
 const WA_DISPLAY = '0788 403734';
-const CALL_1_NUMBER  = '254793788305'; // 0793 788305 — main office line
+const CALL_1_NUMBER  = '254793788305';
 const CALL_1_DISPLAY = '0793 788305';
-const CALL_2_NUMBER  = '254797986648'; // 0797 986648 — secondary line
+const CALL_2_NUMBER  = '254797986648';
 const CALL_2_DISPLAY = '0797 986648';
 
 // ============================================================
 // INVENTORY DATA
 // ============================================================
 const VEHICLES = [
-    // Toyota Probox (2018, 1500cc, 2WD, KES 1.28M) — shown first
+    // ── Newest units (appear first) ──
+    { id:34, name:"Toyota RAV4",                 year:2014, kshPrice:1980000, mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"SUV",       status:"available", hot:true,  image:"images/vehicles/toyota-rav4-2014-1.jpg",         spec:"2400cc • Original paint • Accident free • Low mileage" },
+    { id:31, name:"Toyota Premio",               year:2007, kshPrice:880000,  mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"Sedan",     status:"available", hot:false, image:"images/vehicles/toyota-premio-1500-1.jpg",       spec:"1500cc • Accident free • Original paint • In good condition" },
+    { id:32, name:"Toyota Auris",                year:2014, kshPrice:1350000, mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"Hatchback", status:"available", hot:false, image:"images/vehicles/toyota-auris-1.jpg",             spec:"1500cc • Accident free • Neat dark fabric interior • All new tyres" },
+    { id:33, name:"Toyota Noah",                 year:2018, kshPrice:1950000, mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"Van",       status:"available", hot:true,  image:"images/vehicles/toyota-noah-1.jpg",              spec:"2000cc • 8 Seater • Original paint • Accident free • Automatic sliding door" },
+    { id:28, name:"Honda CR-V",                  year:2008, kshPrice:1350000, mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"SUV",       status:"available", hot:false, image:"images/vehicles/honda-crv-1.jpg",                spec:"2400cc • Accident free • Original paint • Well maintained • Leather interior" },
+    { id:27, name:"Mazda CX-5",                  year:2015, kshPrice:2150000, mileage:"Diesel",   fuel:"Diesel",     transmission:"Automatic",       body:"SUV",       status:"available", hot:true,  image:"images/vehicles/mazda-cx5-1.jpg",                spec:"2200cc • Accident free • Well maintained • Neat fabric interior" },
+    { id:29, name:"Mitsubishi Pajero Sport",     year:2017, kshPrice:3500000, mileage:"Diesel",   fuel:"Diesel",     transmission:"Automatic 4WD",   body:"SUV",       status:"available", hot:true,  image:"images/vehicles/mitsubishi-pajero-sport-1.jpg",  spec:"2500cc Diesel • Automatic 4WD • 7 Seater • Leather powered seats • Negotiable" },
+    { id:30, name:"Toyota Hiace 4WD",            year:2016, kshPrice:2650000, mileage:"Diesel",   fuel:"Diesel",     transmission:"Automatic 4WD",   body:"Van",       status:"available", hot:true,  image:"images/vehicles/toyota-hiace-2016-4wd-1.jpg",    spec:"3000cc Diesel • Automatic 4WD • 9 Seater" },
+    { id:19, name:"Toyota Allion",               year:2004, kshPrice:780000,  mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"Sedan",     status:"available", hot:false, image:"images/vehicles/toyota-allion-1.jpg",            spec:"1500cc • Accident free • Well maintained" },
+    { id:20, name:"Toyota Hiace",                year:2016, kshPrice:2700000, mileage:"Petrol",   fuel:"Petrol",     transmission:"Manual",          body:"Van",       status:"available", hot:true,  image:"images/vehicles/toyota-hiace-2016-1.jpg",        spec:"2000cc Petrol • 11 Seater • Super clean • Original paint • Heavy music • All-round new tyres" },
+    { id:21, name:"Toyota Landcruiser J79",      year:2018, kshPrice:4300000, mileage:"Diesel",   fuel:"Diesel",     transmission:"Manual 5-Speed",  body:"SUV",       status:"available", hot:true,  image:"images/vehicles/toyota-landcruiser-j79-1.jpg",   spec:"4200cc Diesel • Local • Reg KEA • Manual 5-Speed • Perfect condition" },
+    { id:22, name:"Toyota Fielder",              year:2010, kshPrice:1080000, mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"Hatchback", status:"available", hot:false, image:"images/vehicles/toyota-fielder-1.jpg",           spec:"1500cc • Original paint • Accident free • Neat dark fabric interior" },
+    { id:23, name:"Mazda Axela",                 year:2015, kshPrice:1480000, mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"Sedan",     status:"available", hot:false, image:"images/vehicles/mazda-axela-1.jpg",              spec:"1500cc • Petrol • Accident free" },
+    { id:24, name:"Honda Insight",               year:2013, kshPrice:1080000, mileage:"Hybrid",   fuel:"Hybrid",     transmission:"Automatic",       body:"Hatchback", status:"available", hot:false, image:"images/vehicles/honda-insight-1.jpg",            spec:"1500cc Hybrid • Leather interior • Original paint • Mint condition" },
+    { id:25, name:"Nissan Qashqai",              year:2013, kshPrice:1250000, mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"SUV",       status:"available", hot:false, image:"images/vehicles/nissan-qashqai-1.jpg",           spec:"2000cc • Reg KEA • Leather dark interior • Seat warmers • Accident free" },
+    { id:26, name:"Toyota Corolla 110",          year:2000, kshPrice:550000,  mileage:"Petrol",   fuel:"Petrol",     transmission:"Manual",          body:"Sedan",     status:"available", hot:false, image:"images/vehicles/toyota-corolla-110-1.jpg",       spec:"1500cc • Accident free" },
+
+    // ── Existing inventory ──
     { id:18, name:"Toyota Probox",               year:2018, kshPrice:1280000, mileage:"120,964 km",fuel:"Petrol",     transmission:"Automatic",       body:"Van",       status:"available", hot:true,  image:"images/vehicles/toyota-probox-1.jpg",            spec:"1500cc • 2WD • Original paint • Accident free • Dark neat interior • Spacious • Well maintained" },
     { id:1,  name:"Toyota Aqua",                 year:2018, kshPrice:1380000, mileage:"Hybrid",   fuel:"Hybrid",     transmission:"Automatic",       body:"Hatchback", status:"available", hot:true,  image:"images/vehicles/toyota-aqua-1.jpg",              spec:"1500cc • Hybrid • Original paint • Accident free" },
     { id:2,  name:"Toyota Mark X",               year:2012, kshPrice:1380000, mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"Sedan",     status:"available", hot:false, image:"images/vehicles/toyota-mark-x-1.jpg",            spec:"2500cc • Push to start • Keyless entry • New rims • Original paint" },
@@ -1595,7 +1645,7 @@ const VEHICLES = [
     { id:5,  name:"Subaru Forester",             year:2006, kshPrice:880000,  mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"SUV",       status:"available", hot:false, image:"images/vehicles/subaru-forester-2006-1.jpg",     spec:"2000cc • Accident free • Well maintained" },
     { id:6,  name:"Toyota Vanguard",             year:2013, kshPrice:1850000, mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"SUV",       status:"available", hot:false, image:"images/vehicles/toyota-vanguard-1.jpg",          spec:"2400cc • Accident free • Well maintained" },
     { id:7,  name:"Toyota Fortuner",             year:2015, kshPrice:4000000, mileage:"Diesel",   fuel:"Diesel",     transmission:"Automatic",       body:"SUV",       status:"available", hot:true,  image:"images/vehicles/toyota-fortuner-1.jpg",          spec:"3000cc • Diesel • 7 Seater • Original paint • Accident free" },
-    { id:8,  name:"Toyota Rush",                 year:2019, kshPrice:1900000, mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"SUV",       status:"available", hot:false, image:"images/vehicles/toyota-rush-1.jpg",              spec:"1500cc • 2WD • 7 Seater" },
+    { id:8,  name:"Toyota Rush",                 year:2019, kshPrice:1900000, mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"SUV",       status:"sold",      hot:false, image:"images/vehicles/toyota-rush-1.jpg",              spec:"1500cc • 2WD • 7 Seater" },
     { id:9,  name:"Toyota Vitz",                 year:2012, kshPrice:740000,  mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"Hatchback", status:"sold",      hot:false, image:"images/vehicles/toyota-vitz-1.jpg",              spec:"1300cc • Accident free • In good condition" },
     { id:10, name:"Toyota Premio",               year:2007, kshPrice:1250000, mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"Sedan",     status:"sold",      hot:false, image:"images/vehicles/toyota-premio-1.jpg",            spec:"1800cc • Leather seats • Neat beige interior • New tyres • Original paint" },
     { id:11, name:"Subaru Forester Welcab",      year:2015, kshPrice:2150000, mileage:"Petrol",   fuel:"Petrol",     transmission:"Automatic",       body:"SUV",       status:"available", hot:true,  image:"images/vehicles/subaru-forester-2015-1.jpg",     spec:"2000cc • Welcab lift seat • Neat interior • Original paint" },
@@ -1604,9 +1654,8 @@ const VEHICLES = [
     { id:14, name:"Toyota Hiace 7L Tour Van",    year:2013, kshPrice:2650000, mileage:"3000cc",   fuel:"Diesel",     transmission:"Manual",          body:"Van",       status:"available", hot:true,  image:"images/vehicles/toyota-hiace-7l-1.jpg",          spec:"3000cc • 1KD Engine • 9 Seater • Original paint • Tour Van" },
     { id:15, name:"Toyota Rav 4",                year:2015, kshPrice:2650000, mileage:"2400cc",   fuel:"Petrol",     transmission:"Automatic",       body:"SUV",       status:"available", hot:true,  image:"images/vehicles/toyota-rav4-1.jpg",              spec:"2400cc • Sunroof • Electric leather seats • Neat dark interior • Parking sensors • 4WD • Power boot" },
     { id:16, name:"Toyota Hiace 14 Seater",      year:2014, kshPrice:2500000, mileage:"2000cc",   fuel:"Petrol",     transmission:"Manual",          body:"Van",       status:"available", hot:true,  image:"images/vehicles/toyota-hiace-14-seater-1.jpg",   spec:"2000cc Petrol • 2014 Model • 14 Seater • Super clean • Original paint • Heavy music • Accident free" },
-    { id:17, name:"Subaru Forester",             year:2012, kshPrice:1350000, mileage:"161456 km",fuel:"Petrol",     transmission:"Automatic",       body:"SUV",       status:"available", hot:false, image:"images/vehicles/subaru-forester-1.jpg",          spec:"2000cc • AWD • Original paint • Accident free • Neat dark fabric interior" }
+    { id:17, name:"Subaru Forester",             year:2012, kshPrice:1350000, mileage:"161456 km",fuel:"Petrol",     transmission:"Automatic",       body:"SUV",       status:"sold",      hot:false, image:"images/vehicles/subaru-forester-1.jpg",          spec:"2000cc • AWD • Original paint • Accident free • Neat dark fabric interior" }
 ];
-
 // ============================================================
 // INVENTORY VALIDATION
 // ============================================================
@@ -1648,12 +1697,18 @@ const VEHICLES = [
 })();
 
 const GALLERY = [
-    { url:"images/showroom/showroom-1.jpg", title:"Welcome to LIDMAS Auto — Bunyala Rd, Nairobi" },
-    { url:"images/showroom/showroom-2.jpg", title:"Our Premium SUV Collection" },
-    { url:"images/showroom/showroom-3.jpg", title:"Reception & Customer Lounge" },
-    { url:"images/showroom/showroom-4.jpg", title:"Customer Delivery Area" },
-    { url:"images/showroom/showroom-5.jpg", title:"Featured Luxury Vehicles" },
-    { url:"images/showroom/showroom-6.jpg", title:"LIDMAS Auto Showroom Signage" }
+    { url:"images/showroom/showroom-1.jpg",  title:"Welcome to LIDMAS Auto — Bunyala Rd, Nairobi" },
+    { url:"images/showroom/showroom-2.jpg",  title:"Our Premium SUV Collection" },
+    { url:"images/showroom/showroom-3.jpg",  title:"Reception & Customer Lounge" },
+    { url:"images/showroom/showroom-4.jpg",  title:"Customer Delivery Area" },
+    { url:"images/showroom/showroom-5.jpg",  title:"Featured Luxury Vehicles" },
+    { url:"images/showroom/showroom-6.jpg",  title:"LIDMAS Auto Showroom Signage" },
+    { url:"images/showroom/showroom-7.jpg",  title:"Sedan Section — Executive Line-Up" },
+    { url:"images/showroom/showroom-8.jpg",  title:"Finance & Documentation Desk" },
+    { url:"images/showroom/showroom-9.jpg",  title:"Vehicle Inspection Bay" },
+    { url:"images/showroom/showroom-10.jpg", title:"Customer Waiting Area" },
+    { url:"images/showroom/showroom-11.jpg", title:"Night Display — Showroom at Dusk" },
+    { url:"images/showroom/showroom-12.jpg",title:"Matatu Yard — 7L & 9L Line-Up" }
 ];
 
 const REVIEWS = [
@@ -1669,7 +1724,6 @@ const REVIEWS = [
 ];
 
 const VEHICLE_GALLERIES = {
-    18: ["images/vehicles/toyota-probox-1.jpg","images/vehicles/toyota-probox-2.jpg","images/vehicles/toyota-probox-3.jpg","images/vehicles/toyota-probox-4.jpg","images/vehicles/toyota-probox-5.jpg","images/vehicles/toyota-probox-6.jpg"],
     1: ["images/vehicles/toyota-aqua-1.jpg","images/vehicles/toyota-aqua-2.jpg","images/vehicles/toyota-aqua-3.jpg","images/vehicles/toyota-aqua-4.jpg","images/vehicles/toyota-aqua-5.jpg","images/vehicles/toyota-aqua-6.jpg"],
     2: ["images/vehicles/toyota-mark-x-1.jpg","images/vehicles/toyota-mark-x-2.jpg","images/vehicles/toyota-mark-x-3.jpg","images/vehicles/toyota-mark-x-4.jpg","images/vehicles/toyota-mark-x-5.jpg","images/vehicles/toyota-mark-x-6.jpg"],
     3: ["images/vehicles/subaru-forester-2012-1.jpg","images/vehicles/subaru-forester-2012-2.jpg","images/vehicles/subaru-forester-2012-3.jpg","images/vehicles/subaru-forester-2012-4.jpg","images/vehicles/subaru-forester-2012-5.jpg","images/vehicles/subaru-forester-2012-6.jpg"],
@@ -1686,7 +1740,24 @@ const VEHICLE_GALLERIES = {
     14: ["images/vehicles/toyota-hiace-7l-1.jpg","images/vehicles/toyota-hiace-7l-2.jpg","images/vehicles/toyota-hiace-7l-3.jpg","images/vehicles/toyota-hiace-7l-4.jpg","images/vehicles/toyota-hiace-7l-5.jpg","images/vehicles/toyota-hiace-7l-6.jpg"],
     15: ["images/vehicles/toyota-rav4-1.jpg","images/vehicles/toyota-rav4-2.jpg","images/vehicles/toyota-rav4-3.jpg","images/vehicles/toyota-rav4-4.jpg","images/vehicles/toyota-rav4-5.jpg","images/vehicles/toyota-rav4-6.jpg"],
     16: ["images/vehicles/toyota-hiace-14-seater-1.jpg","images/vehicles/toyota-hiace-14-seater-2.jpg","images/vehicles/toyota-hiace-14-seater-3.jpg","images/vehicles/toyota-hiace-14-seater-4.jpg","images/vehicles/toyota-hiace-14-seater-5.jpg","images/vehicles/toyota-hiace-14-seater-6.jpg"],
-    17: ["images/vehicles/subaru-forester-1.jpg","images/vehicles/subaru-forester-2.jpg","images/vehicles/subaru-forester-3.jpg","images/vehicles/subaru-forester-4.jpg","images/vehicles/subaru-forester-5.jpg","images/vehicles/subaru-forester-6.jpg"]
+    17: ["images/vehicles/subaru-forester-1.jpg","images/vehicles/subaru-forester-2.jpg","images/vehicles/subaru-forester-3.jpg","images/vehicles/subaru-forester-4.jpg","images/vehicles/subaru-forester-5.jpg","images/vehicles/subaru-forester-6.jpg"],
+    18: ["images/vehicles/toyota-probox-1.jpg","images/vehicles/toyota-probox-2.jpg","images/vehicles/toyota-probox-3.jpg","images/vehicles/toyota-probox-4.jpg","images/vehicles/toyota-probox-5.jpg","images/vehicles/toyota-probox-6.jpg"],
+    19: ["images/vehicles/toyota-allion-1.jpg","images/vehicles/toyota-allion-2.jpg","images/vehicles/toyota-allion-3.jpg","images/vehicles/toyota-allion-4.jpg","images/vehicles/toyota-allion-5.jpg","images/vehicles/toyota-allion-6.jpg"],
+    20: ["images/vehicles/toyota-hiace-2016-1.jpg","images/vehicles/toyota-hiace-2016-2.jpg","images/vehicles/toyota-hiace-2016-3.jpg","images/vehicles/toyota-hiace-2016-4.jpg","images/vehicles/toyota-hiace-2016-5.jpg","images/vehicles/toyota-hiace-2016-6.jpg"],
+    21: ["images/vehicles/toyota-landcruiser-j79-1.jpg","images/vehicles/toyota-landcruiser-j79-2.jpg","images/vehicles/toyota-landcruiser-j79-3.jpg","images/vehicles/toyota-landcruiser-j79-4.jpg","images/vehicles/toyota-landcruiser-j79-5.jpg","images/vehicles/toyota-landcruiser-j79-6.jpg"],
+    22: ["images/vehicles/toyota-fielder-1.jpg","images/vehicles/toyota-fielder-2.jpg","images/vehicles/toyota-fielder-3.jpg","images/vehicles/toyota-fielder-4.jpg","images/vehicles/toyota-fielder-5.jpg","images/vehicles/toyota-fielder-6.jpg"],
+    23: ["images/vehicles/mazda-axela-1.jpg","images/vehicles/mazda-axela-2.jpg","images/vehicles/mazda-axela-3.jpg","images/vehicles/mazda-axela-4.jpg","images/vehicles/mazda-axela-5.jpg","images/vehicles/mazda-axela-6.jpg"],
+    24: ["images/vehicles/honda-insight-1.jpg","images/vehicles/honda-insight-2.jpg","images/vehicles/honda-insight-3.jpg","images/vehicles/honda-insight-4.jpg","images/vehicles/honda-insight-5.jpg","images/vehicles/honda-insight-6.jpg"],
+    25: ["images/vehicles/nissan-qashqai-1.jpg","images/vehicles/nissan-qashqai-2.jpg","images/vehicles/nissan-qashqai-3.jpg","images/vehicles/nissan-qashqai-4.jpg","images/vehicles/nissan-qashqai-5.jpg","images/vehicles/nissan-qashqai-6.jpg"],
+    26: ["images/vehicles/toyota-corolla-110-1.jpg","images/vehicles/toyota-corolla-110-2.jpg","images/vehicles/toyota-corolla-110-3.jpg","images/vehicles/toyota-corolla-110-4.jpg","images/vehicles/toyota-corolla-110-5.jpg","images/vehicles/toyota-corolla-110-6.jpg"],
+    27: ["images/vehicles/mazda-cx5-1.jpg","images/vehicles/mazda-cx5-2.jpg","images/vehicles/mazda-cx5-3.jpg","images/vehicles/mazda-cx5-4.jpg","images/vehicles/mazda-cx5-5.jpg","images/vehicles/mazda-cx5-6.jpg"],
+    28: ["images/vehicles/honda-crv-1.jpg","images/vehicles/honda-crv-2.jpg","images/vehicles/honda-crv-3.jpg","images/vehicles/honda-crv-4.jpg","images/vehicles/honda-crv-5.jpg","images/vehicles/honda-crv-6.jpg"],
+    29: ["images/vehicles/mitsubishi-pajero-sport-1.jpg","images/vehicles/mitsubishi-pajero-sport-2.jpg","images/vehicles/mitsubishi-pajero-sport-3.jpg","images/vehicles/mitsubishi-pajero-sport-4.jpg","images/vehicles/mitsubishi-pajero-sport-5.jpg","images/vehicles/mitsubishi-pajero-sport-6.jpg"],
+    30: ["images/vehicles/toyota-hiace-2016-4wd-1.jpg","images/vehicles/toyota-hiace-2016-4wd-2.jpg","images/vehicles/toyota-hiace-2016-4wd-3.jpg","images/vehicles/toyota-hiace-2016-4wd-4.jpg","images/vehicles/toyota-hiace-2016-4wd-5.jpg","images/vehicles/toyota-hiace-2016-4wd-6.jpg"],
+    31: ["images/vehicles/toyota-premio-1500-1.jpg","images/vehicles/toyota-premio-1500-2.jpg","images/vehicles/toyota-premio-1500-3.jpg","images/vehicles/toyota-premio-1500-4.jpg","images/vehicles/toyota-premio-1500-5.jpg","images/vehicles/toyota-premio-1500-6.jpg"],
+    32: ["images/vehicles/toyota-auris-1.jpg","images/vehicles/toyota-auris-2.jpg","images/vehicles/toyota-auris-3.jpg","images/vehicles/toyota-auris-4.jpg","images/vehicles/toyota-auris-5.jpg","images/vehicles/toyota-auris-6.jpg"],
+    33: ["images/vehicles/toyota-noah-1.jpg","images/vehicles/toyota-noah-2.jpg","images/vehicles/toyota-noah-3.jpg","images/vehicles/toyota-noah-4.jpg","images/vehicles/toyota-noah-5.jpg","images/vehicles/toyota-noah-6.jpg"],
+    34: ["images/vehicles/toyota-rav4-2014-1.jpg","images/vehicles/toyota-rav4-2014-2.jpg","images/vehicles/toyota-rav4-2014-3.jpg","images/vehicles/toyota-rav4-2014-4.jpg","images/vehicles/toyota-rav4-2014-5.jpg","images/vehicles/toyota-rav4-2014-6.jpg"]
 };
 
 const FAVORITES_KEY = 'lidmas_favorites';
@@ -1822,7 +1893,6 @@ function bookVehicle(name) {
     setTimeout(() => document.getElementById('appName').focus(), 800);
 }
 
-// INQUIRY → goes to WhatsApp number (0788 403734)
 function inquireVehicle(name) {
     const msg = `Hi LIDMAS Auto, I'm interested in the ${name}. Could you share more details?`;
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
@@ -1890,7 +1960,6 @@ function openVehicleModal(id) {
             <tr><td>Fuel</td><td>${v.fuel}</td></tr>
             ${v.spec ? `<tr><td>Key Features</td><td style="font-size:0.8rem; line-height:1.5;">${v.spec}</td></tr>` : ''}
             <tr><td>Status</td><td style="color: ${v.status === 'available' ? 'var(--success)' : 'var(--danger)'};">${v.status === 'available' ? '✓ Available Now' : 'Sold'}</td></tr>
-            <tr><td>Warranty</td><td>12 Months</td></tr>
             <tr><td>Inspection</td><td>150-Point Passed</td></tr>
         </table>
 
@@ -2093,7 +2162,6 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     });
 });
 
-// BOOKING FORM → goes to WhatsApp number (0788 403734)
 document.getElementById('appointmentForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const name = document.getElementById('appName').value;
