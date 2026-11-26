@@ -184,17 +184,16 @@
             position: sticky; top: 0; z-index: 1000; transition: all 0.3s;
         }
         header.scrolled { box-shadow: 0 5px 30px rgba(15,61,46,0.15); }
-        .header-flex { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; flex-wrap: wrap; gap: 15px; }
-        .logo { display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 800; color: var(--forest); letter-spacing: 0.5px; text-decoration: none; }
-        .logo i { color: var(--terracotta); font-size: 1.8rem; animation: float 3s infinite; }
+       .header-flex { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; flex-wrap: wrap; gap: 10px; max-height: 84px; }
+        .logo { display: flex; align-items: center; gap: 8px; font-family: 'Cormorant Garamond', serif; font-size: clamp(1.15rem, 2.4vw, 1.45rem); font-weight: 800; color: var(--forest); letter-spacing: 0.3px; text-decoration: none; white-space: nowrap; }
+.logo i { color: var(--terracotta); font-size: clamp(1.2rem, 2.6vw, 1.55rem); animation: float 3s infinite; }
         nav { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
-        nav a { text-decoration: none; font-weight: 600; color: var(--forest); transition: all 0.3s; padding: 8px 14px; border-radius: 8px; font-size: 0.9rem; }
+       nav a { text-decoration: none; font-weight: 600; color: var(--forest); transition: all 0.3s; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; }
         nav a:hover, nav a.active { color: var(--terracotta); background: rgba(217,119,87,0.1); }
         .header-cta { background: var(--terracotta); color: white !important; padding: 10px 20px !important; border-radius: 30px !important; }
         .header-cta:hover { background: var(--terracotta-dark) !important; color: white !important; }
         .mobile-toggle { display: none; background: none; border: none; color: var(--forest); font-size: 1.5rem; cursor: pointer; }
 
-        .hero { min-height: 92vh; display: flex; align-items: center; }
         .hero-content { text-align: center; padding: 60px 0; width: 100%; }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 8px;
@@ -609,8 +608,11 @@
             .financing-grid, .appointment-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
-        @media (max-width: 768px) {
+               @media (max-width: 768px) {
             .mobile-toggle { display: block; }
+            .header-flex { padding: 8px 0; max-height: none; }
+            .logo { font-size: 1.1rem; }
+            .logo i { font-size: 1.2rem; }
             nav {
                 display: none; width: 100%; flex-direction: column;
                 align-items: stretch; margin-top: 15px; padding-top: 15px;
@@ -1332,7 +1334,7 @@
                 <div class="faq-answer">Yes! We partner with leading banks and SACCOs in Kenya. You can finance up to 80% of the vehicle price with repayment periods from 12 to 60 months.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)"><span>Can I trade in my old car?</span><i class="fas fa-chevron-down"></i></div>
+                <div class="faq-question" onclick="toggleFaq(this)"><span>Can I trade in my car?</span><i class="fas fa-chevron-down"></i></div>
                 <div class="faq-answer">Absolutely! Bring your vehicle to our showroom and our team will evaluate it and offer you a fair market price that goes toward your new car.</div>
             </div>
             <div class="faq-item">
